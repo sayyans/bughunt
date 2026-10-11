@@ -558,185 +558,32 @@ function AppContent({ equippedCosmetics, setEquippedCosmetics, globalPointer, se
          setLoading(false);
       }
    }
-   async function quickMatch({ language: matchLanguage, difficulty: matchDifficulty, level, displayName }) {
+   async function quickMatch({ language: matchLanguage, difficulty: matchDifficulty }) {
       setLoading(true);
       setError("");
       try {
-         const { data: { user }, error: userError } = await supabase.auth.getUser();
-         if (userError) throw userError;
-         if (!user) throw new Error("Sign in before using Quick Match.");
+         const { data, error: matchError } = await supabase.rpc("bughunt_quick_match", {
+            p_language: matchLanguage,
+            p_difficulty: matchDifficulty,
+         });
+         if (matchError) throw matchError;
+         const room = data?.room;
+         const player = data?.player;
+         if (!room?.id || !player?.id) throw new Error("Matchmaking returned an incomplete room.");
 
-         const staleCutoff = new Date(Date.now() - 35 * 1000).toISOString();
-
-         // Remove this account from any old WAITING Quick Match room first.
-         // Query players and rooms separately so this does not depend on an embedded relationship.
-         const { data: myPlayerRows, error: myRowsError } = await supabase
+         const { data: occupants, error: occupantsError } = await supabase
             .from("players")
-            .select("id, room_id")
-            .eq("user_id", user.id);
-         if (myRowsError) throw myRowsError;
-
-         if (myPlayerRows?.length) {
-            const myRoomIds = [...new Set(myPlayerRows.map((row) => row.room_id).filter(Boolean))];
-            if (myRoomIds.length) {
-               const { data: myRooms, error: myRoomsError } = await supabase
-                  .from("rooms")
-                  .select("id, game_mode, status")
-                  .in("id", myRoomIds);
-               if (myRoomsError) throw myRoomsError;
-
-               const oldQuickRoomIds = (myRooms ?? [])
-                  .filter((room) => room.game_mode === "quick" && room.status === "waiting")
-                  .map((room) => room.id);
-
-               if (oldQuickRoomIds.length) {
-                  const oldPlayerIds = myPlayerRows
-                     .filter((row) => oldQuickRoomIds.includes(row.room_id))
-                     .map((row) => row.id);
-
-                  if (oldPlayerIds.length) {
-                     const { error: cleanupOwnError } = await supabase
-                        .from("players")
-                        .delete()
-                        .in("id", oldPlayerIds);
-                     if (cleanupOwnError) throw cleanupOwnError;
-                  }
-
-                  // Delete any old Quick room that became empty after removing this user.
-                  for (const oldRoomId of oldQuickRoomIds) {
-                     const { data: remainingOld, error: remainingOldError } = await supabase
-                        .from("players")
-                        .select("id")
-                        .eq("room_id", oldRoomId);
-                     if (remainingOldError) throw remainingOldError;
-                     if (!(remainingOld ?? []).length) {
-                        const { error: deleteOldRoomError } = await supabase
-                           .from("rooms")
-                           .delete()
-                           .eq("id", oldRoomId)
-                           .eq("status", "waiting")
-                           .eq("game_mode", "quick");
-                        if (deleteOldRoomError) throw deleteOldRoomError;
-                     }
-                  }
-               }
-            }
-         }
-
-         const { data: openRooms, error: searchError } = await supabase
-            .from("rooms")
             .select("*")
-            .eq("status", "waiting")
-            .eq("game_mode", "quick")
-            .eq("language", matchLanguage)
-            .eq("difficulty", matchDifficulty)
-            .gte("match_level", Math.max(1, level - 2))
-            .lte("match_level", level + 2)
-            .order("created_at", { ascending: true })
-            .limit(8);
-         if (searchError) throw searchError;
+            .eq("room_id", room.id)
+            .order("created_at", { ascending: true });
+         if (occupantsError) throw occupantsError;
 
-         for (const room of openRooms ?? []) {
-            // Clear abandoned occupants before deciding whether this room is usable.
-            const { error: staleDeleteError } = await supabase
-               .from("players")
-               .delete()
-               .eq("room_id", room.id)
-               .lt("last_seen", staleCutoff);
-            if (staleDeleteError) {
-               console.error("Couldn't clean stale Quick Match players:", staleDeleteError);
-               continue;
-            }
-
-            const { data: occupants, error: occupantsError } = await supabase
-               .from("players")
-               .select("*")
-               .eq("room_id", room.id)
-               .order("created_at", { ascending: true });
-            if (occupantsError) continue;
-
-            if (!(occupants ?? []).length) {
-               await supabase
-                  .from("rooms")
-                  .delete()
-                  .eq("id", room.id)
-                  .eq("status", "waiting");
-               continue;
-            }
-
-            if ((occupants ?? []).length >= 4) continue;
-            if ((occupants ?? []).some((player) => player.user_id === user.id)) continue;
-
-            const { data: joined, error: joinError } = await supabase
-               .from("players")
-               .insert({
-                  room_id: room.id,
-                  name: displayName,
-                  score: 0,
-                  is_host: false,
-                  user_id: user.id,
-                  last_seen: new Date().toISOString(),
-               })
-               .select()
-               .single();
-
-            if (joinError) {
-               console.error("Couldn't join candidate Quick Match room:", joinError);
-               continue;
-            }
-
-            setPlayerName(displayName);
-            setCurrentRoom(room);
-            setCurrentPlayer(joined);
-            setPlayers([...(occupants ?? []), joined]);
-            setAnswers([]);
-            setRoomCode(room.code);
-            setScreen("lobby");
-            return;
-         }
-
-         // No valid room exists: create a clean one and become its host.
-         const code = generateRoomCode();
-         const { data: room, error: roomError } = await supabase
-            .from("rooms")
-            .insert({
-               code,
-               language: matchLanguage,
-               difficulty: matchDifficulty,
-               rounds: 5,
-               status: "waiting",
-               phase: "lobby",
-               game_mode: "quick",
-               match_level: level,
-            })
-            .select()
-            .single();
-         if (roomError) throw roomError;
-
-         const { data: host, error: hostError } = await supabase
-            .from("players")
-            .insert({
-               room_id: room.id,
-               name: displayName,
-               score: 0,
-               is_host: true,
-               user_id: user.id,
-               last_seen: new Date().toISOString(),
-            })
-            .select()
-            .single();
-
-         if (hostError) {
-            await supabase.from("rooms").delete().eq("id", room.id);
-            throw hostError;
-         }
-
-         setPlayerName(displayName);
+         setPlayerName(player.name);
          setCurrentRoom(room);
-         setCurrentPlayer(host);
-         setPlayers([host]);
+         setCurrentPlayer(player);
+         setPlayers(occupants ?? [player]);
          setAnswers([]);
-         setRoomCode(code);
+         setRoomCode(room.code);
          setScreen("lobby");
       } catch (matchError) {
          console.error("Quick Match failed:", matchError);
@@ -745,7 +592,6 @@ function AppContent({ equippedCosmetics, setEquippedCosmetics, globalPointer, se
          setLoading(false);
       }
    }
-
 
    useEffect(() => {
       if ((screen !== "lobby" && screen !== "game") || !currentRoom?.id) {
