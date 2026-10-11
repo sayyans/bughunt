@@ -1,0 +1,80 @@
+/* BugHunt mobile-only Arena header and leaderboard fixes.
+   Append this at the END of src/App.css (after all existing rules). */
+@media (max-width: 760px) {
+  /* Keep the home link, brand and account badge from squeezing each other. */
+  .expansion-app .expansion-nav {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-areas: "home balance" "brand brand" !important;
+    align-items: center !important;
+    gap: 10px 12px !important;
+    padding: 16px 16px 12px !important;
+  }
+  .expansion-app .expansion-nav > .back-button {
+    grid-area: home;
+    justify-self: start;
+    min-width: 0;
+  }
+  .expansion-app .expansion-nav > .expansion-brand {
+    grid-area: brand;
+    justify-self: center;
+    text-align: center;
+    min-width: 0;
+  }
+  .expansion-app .expansion-nav > .account-pill {
+    grid-area: balance;
+    justify-self: end;
+    display: inline-flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    width: auto !important;
+    max-width: 100%;
+    min-width: 0;
+    gap: 6px !important;
+    padding: 7px 10px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+  .expansion-app .expansion-nav .account-pill > span:not(.avatar-badge) {
+    white-space: nowrap !important;
+  }
+  .expansion-app .expansion-nav .account-pill .avatar-badge {
+    width: 25px !important;
+    height: 25px !important;
+    flex: 0 0 25px !important;
+  }
+  /* The leaderboard's name is the third grid item, and must be visible. */
+  .expansion-app .leaderboard-line {
+    display: grid !important;
+    grid-template-columns: 34px 32px minmax(0, 1fr) auto !important;
+    gap: 8px !important;
+    align-items: center !important;
+    padding: 12px 10px !important;
+    min-width: 0;
+  }
+  .expansion-app .leaderboard-line .leader-name {
+    display: block !important;
+    visibility: visible !important;
+    min-width: 0 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  .expansion-app .leaderboard-line .leader-level,
+  .expansion-app .leaderboard-line .leader-wins {
+    display: none !important;
+  }
+  .expansion-app .leaderboard-line .leader-xp {
+    display: block !important;
+    font-size: 12px;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .expansion-app .leaderboard-line .avatar-badge {
+    width: 30px;
+    height: 30px;
+    min-width: 0;
+  }
+}

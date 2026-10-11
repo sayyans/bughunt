@@ -1,0 +1,34 @@
+/* BugHunt: iPhone-sized arena intro layout. */
+@media (max-width: 650px) {
+  .bh-room-cutscene[role="status"] { overflow:hidden; }
+  .bh-room-cutscene[role="status"] .bh-room-header {padding:14px 12px;gap:5px;align-items:center;font-size:10px;letter-spacing:0;}
+  .bh-room-cutscene[role="status"] .bh-room-header strong {font-size:11px;text-align:center;}
+  .bh-room-cutscene[role="status"] .bh-room-window {top:16%;left:8%;width:24%;height:17%;border-width:7px;font-size:20px;}
+  .bh-room-cutscene[role="status"] .bh-room-neon {top:21%;right:6%;font-size:clamp(15px,4vw,22px);letter-spacing:.08em;}
+  .bh-room-cutscene[role="status"] .bh-room-floor {top:66%;}
+  
+  /* Give each station a separate half of the viewport. */
+  .bh-room-cutscene[role="status"] .bh-room-desk {width:38% !important;max-width:160px;min-width:0;height:83px;bottom:24%;border-top-width:10px;}
+  .bh-room-cutscene[role="status"] .bh-room-desk-left {left:7% !important;right:auto !important;}
+  .bh-room-cutscene[role="status"] .bh-room-desk-right {left:auto !important;right:7% !important;}
+  .bh-room-cutscene[role="status"] .bh-room-monitor {width:66%;left:17%;height:75px;bottom:calc(100% + 1px);border-width:6px;font-size:20px;}
+  .bh-room-cutscene[role="status"] .bh-room-chair {left:34%;width:32%;}
+  .bh-room-cutscene[role="status"] .bh-room-nameplate {width:max-content;max-width:115%;font-size:clamp(10px,2.8vw,13px);padding:5px 7px;bottom:calc(100% + 83px);}
+  .bh-room-cutscene[role="status"] .bh-room-avatar {width:clamp(64px,20vw,86px);bottom:21%;}
+  .bh-room-cutscene[role="status"] .bh-room-walking .bh-room-avatar-left,
+  .bh-room-cutscene[role="status"].bh-room-walking .bh-room-avatar-left,
+  .bh-room-cutscene[role="status"].bh-room-sitting .bh-room-avatar-left,
+  .bh-room-cutscene[role="status"].bh-room-typing .bh-room-avatar-left {left:16% !important;}
+  .bh-room-cutscene[role="status"].bh-room-walking .bh-room-avatar-right,
+  .bh-room-cutscene[role="status"].bh-room-sitting .bh-room-avatar-right,
+  .bh-room-cutscene[role="status"].bh-room-typing .bh-room-avatar-right {left:68% !important;}
+  .bh-room-cutscene[role="status"].bh-room-sitting .bh-room-avatar,
+  .bh-room-cutscene[role="status"].bh-room-typing .bh-room-avatar {bottom:24%;}
+  .bh-room-cutscene[role="status"] .bh-room-caption {left:5%;width:90%;bottom:12%;font-size:clamp(14px,3.8vw,18px);line-height:1.35;padding:0 8px;box-sizing:border-box;}
+  .bh-room-cutscene[role="status"] .bh-room-skip {left:50%;right:auto;transform:translateX(-50%);bottom:4%;font-size:13px;padding:9px 14px;white-space:nowrap;}
+}
+@media (max-width: 380px) {
+  .bh-room-cutscene[role="status"] .bh-room-nameplate {max-width:105%;font-size:10px;padding:4px 5px;}
+  .bh-room-cutscene[role="status"] .bh-room-desk-left {left:5% !important;}
+  .bh-room-cutscene[role="status"] .bh-room-desk-right {right:5% !important;}
+}

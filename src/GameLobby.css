@@ -1,0 +1,650 @@
+/* Bug Hunt character-first lobby — scoped to .game-hq */
+.game-hq{max-width:1230px;margin:22px auto 64px;padding:25px;border:1px solid rgba(93,224,199,.32);border-radius:30px;background:linear-gradient(140deg,#152543 0%,#10192f 60%,#1a1736 100%);color:#f7f9ff;box-shadow:0 25px 90px #050b2090;position:relative;overflow:hidden}
+.game-hq__topline,.game-hq__modes-heading{display:flex;justify-content:space-between;align-items:center;gap:18px}.game-hq__topline{font-size:12px;font-weight:900;letter-spacing:.16em;color:#65ebcb}.game-hq__topline span:last-child{color:#f6d977}
+.game-hq__main{display:grid;grid-template-columns:minmax(260px,.86fr) 1.14fr;align-items:center;gap:34px;margin-top:16px;padding:22px 28px;background:radial-gradient(circle at 27% 55%,#174e5a80,transparent 45%),linear-gradient(125deg,#1c2b4a,#10182d);border:1px solid #364c70;border-radius:24px}
+.game-hq__stage{height:335px;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column}.game-hq__halo{position:absolute;width:270px;height:270px;border-radius:50%;background:radial-gradient(circle,#4cdcb32b,transparent 69%)}.game-hq__avatar{position:relative;z-index:1;width:265px;height:285px;display:flex;align-items:center;justify-content:center}.game-hq__avatar svg{width:100%;height:100%;max-height:100%}.game-hq__pedestal{position:absolute;bottom:43px;width:175px;height:18px;background:#53c4bf48;border-radius:50%;filter:blur(4px)}.game-hq__customize{position:relative;z-index:2;border:1px solid #71ddc17a;background:#162b40;color:#b9ffe8;border-radius:999px;padding:9px 17px;font-weight:800;cursor:pointer}
+.game-hq__eyebrow,.game-hq__modes-heading small,.game-hq__code small{font-size:12px;letter-spacing:.17em;color:#6ff4cf;font-weight:900}.game-hq__welcome h1{font-size:clamp(29px,3.7vw,51px);line-height:1.07;margin:14px 0;color:white}.game-hq__welcome p{color:#b8c9e0;max-width:530px;line-height:1.65;font-size:16px}.game-hq__statrow{display:flex;flex-wrap:wrap;gap:9px;margin:21px 0}.game-hq__statrow span{padding:9px 12px;border:1px solid #365b68;border-radius:10px;background:#091a2a;color:#d8eff3;font-size:13px}.game-hq__quickactions{display:flex;flex-wrap:wrap;gap:10px}.game-hq__quickactions button{border-radius:12px;padding:14px 18px;font-weight:900;cursor:pointer;border:1px solid #6bd9be;color:#102d35;background:#54d7b0}.game-hq__quickactions button+button{background:#1b2c49;color:#f4f9ff;border-color:#4a6483}
+.game-hq__modes-heading{margin:33px 4px 18px}.game-hq__modes-heading h2{font-size:27px;margin:6px 0}.game-hq__modes-heading>span{font-size:11px;letter-spacing:.1em;color:#c4b0ff}
+.game-hq__modes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.game-mode-card{min-height:192px;display:flex;align-items:flex-start;flex-direction:column;gap:10px;text-align:left;border:1px solid #466180;border-radius:19px;padding:19px 15px;color:white;background:linear-gradient(160deg,#263a60,#17233e);cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s}.game-mode-card:hover,.game-mode-card:focus-visible{transform:translateY(-4px);border-color:#83e8d5;box-shadow:0 10px 25px #0005}.game-mode-card__icon{font-size:35px}.game-mode-card strong{font-size:14px;letter-spacing:.02em}.game-mode-card small{font-size:12px;color:#c6d2e4;line-height:1.4}.game-mode-card__go{margin-top:auto;font-weight:900;color:#80f4d6;font-size:12px}.game-mode-card--arena{background:linear-gradient(155deg,#3b255e,#1d2148)}.game-mode-card--rookie{background:linear-gradient(155deg,#1e5149,#172a3e)}.game-mode-card--solo{background:linear-gradient(155deg,#263c66,#18273f)}.game-mode-card--join{background:linear-gradient(155deg,#3c2b52,#202641)}
+.game-hq__bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:17px}.game-hq__bottom button{display:flex;align-items:center;flex-wrap:wrap;gap:8px;border:1px solid #384967;border-radius:14px;padding:16px;text-align:left;color:white;background:#17233c;cursor:pointer}.game-hq__bottom button span{display:block;width:100%;font-size:12px;color:#b8c8e1}.game-hq__code{margin-top:23px;padding:18px 20px;display:flex;align-items:center;justify-content:center;gap:36px;border-top:1px solid #344968}.game-hq__code .code-window{width:min(100%,370px);max-width:370px;transform:scale(.84);transform-origin:center;margin:-12px -25px}.game-hq__code h3{margin:9px 0;font-size:20px}.game-hq__code p{color:#b8c8e1}
+@media(max-width:1000px){.game-hq__modes{grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){.game-hq{margin:10px;padding:14px;border-radius:19px}.game-hq__main{grid-template-columns:1fr;gap:0;padding:15px}.game-hq__stage{height:285px}.game-hq__avatar{height:245px}.game-hq__welcome h1{font-size:30px}.game-hq__modes{grid-template-columns:repeat(2,minmax(0,1fr))}.game-mode-card{min-height:170px}.game-hq__bottom{grid-template-columns:1fr}.game-hq__code{flex-direction:column;gap:4px}.game-hq__modes-heading>span,.game-hq__topline span:last-child{display:none}}@media(max-width:400px){.game-hq__modes{grid-template-columns:1fr}.game-mode-card{min-height:130px}}
+
+/* Classic Bug Hunt hero and bold original-style CTAs */
+.game-hq__greeting{color:#f6d987;font-size:13px;font-weight:900;letter-spacing:.12em;margin-top:14px}
+.game-hq__welcome .game-hq__hero-title{display:flex;flex-direction:column;gap:1px;margin:10px 0 17px;font-size:clamp(37px,4.5vw,69px);line-height:.98;letter-spacing:-.055em;font-weight:1000;text-transform:uppercase}
+.game-hq__hero-title span:first-child{color:#fff}
+.game-hq__hero-title span:last-child{background:linear-gradient(90deg,#28d59c 0%,#3dbafa 52%,#b477ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.game-hq__classic-actions{margin-top:24px;gap:13px}
+.game-hq__classic-actions button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:55px;padding:15px 23px;border-radius:9px;font-size:14px;font-weight:950;letter-spacing:.02em;box-shadow:0 8px 25px #0003;transition:transform .18s,box-shadow .18s}
+.game-hq__classic-actions button:first-child{background:linear-gradient(110deg,#34e3a1,#2cbeb3);border:1px solid #79f9d0;color:#092c2b}
+.game-hq__classic-actions button+button{background:transparent;border:2px solid #7f91b7;color:#fff}
+.game-hq__classic-actions button:hover{transform:translateY(-3px);box-shadow:0 12px 32px #00d8b030}
+@media(max-width:700px){.game-hq__welcome .game-hq__hero-title{font-size:clamp(34px,9vw,51px)}.game-hq__classic-actions button{width:100%}}
+
+/* Original Bug Hunt iridescence — lobby-only visual layer */
+.game-hq {
+   isolation: isolate;
+   background:
+      radial-gradient(ellipse at 8% 8%, rgba(222, 87, 255, .24), transparent 42%),
+      radial-gradient(ellipse at 91% 18%, rgba(55, 194, 255, .22), transparent 43%),
+      radial-gradient(ellipse at 44% 94%, rgba(56, 239, 191, .15), transparent 49%),
+      linear-gradient(140deg, #15182e, #181632 53%, #0b2330);
+   border-color: rgba(175, 166, 255, .5);
+   box-shadow: 0 25px 90px #050b2090, 0 0 45px rgba(154, 112, 255, .12);
+}
+.game-hq::before {
+   content: '';
+   position: absolute;
+   inset: 0;
+   pointer-events: none;
+   z-index: -1;
+   background: linear-gradient(115deg, transparent 15%, rgba(245, 125, 239, .065) 32%, rgba(111, 239, 249, .09) 48%, rgba(184, 142, 255, .075) 64%, transparent 80%);
+   background-size: 220% 100%;
+   animation: bughunt-iridescence 12s ease-in-out infinite alternate;
+}
+@keyframes bughunt-iridescence {
+   from { background-position: 0% 50%; }
+   to { background-position: 100% 50%; }
+}
+.game-hq__main {
+   background:
+      radial-gradient(ellipse at 20% 55%, rgba(69, 228, 204, .18), transparent 48%),
+      radial-gradient(ellipse at 85% 12%, rgba(207, 106, 255, .14), transparent 48%),
+      linear-gradient(130deg, #182c44, #14182f 72%);
+   border-color: rgba(147, 182, 242, .48);
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+}
+.game-hq__halo {
+   background: radial-gradient(circle, rgba(81, 234, 201, .26), rgba(155, 110, 255, .11) 42%, transparent 72%);
+}
+.game-hq__hero-title span:last-child {
+   background: linear-gradient(100deg, #5ceec3 0%, #5ec9ff 28%, #aa94ff 56%, #ff8fd9 82%, #79f0d1 100%);
+   background-size: 200% 100%;
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+   animation: bughunt-iridescence 9s ease-in-out infinite alternate;
+}
+.game-hq__classic-actions button:first-child {
+   background: linear-gradient(115deg, #65efbd, #65d4ff 38%, #bb99ff 72%, #ff9bd4);
+   background-size: 180% 100%;
+   border: 1px solid rgba(233, 245, 255, .72);
+   color: #112239;
+   box-shadow: 0 8px 28px rgba(103, 208, 255, .2);
+   animation: bughunt-iridescence 10s ease-in-out infinite alternate;
+}
+.game-hq__classic-actions button+button,
+.game-hq__customize {
+   border: 1px solid rgba(184, 177, 255, .7);
+   background: linear-gradient(125deg, rgba(116, 80, 174, .25), rgba(47, 176, 192, .17));
+   color: #f7f5ff;
+}
+.game-mode-card {
+   border-color: rgba(145, 158, 222, .5);
+   background: linear-gradient(145deg, rgba(94, 69, 151, .37), rgba(34, 55, 91, .95) 54%, rgba(30, 103, 115, .26));
+}
+.game-mode-card:nth-child(2n) {
+   background: linear-gradient(145deg, rgba(39, 130, 148, .29), rgba(34, 45, 85, .96) 55%, rgba(161, 79, 160, .22));
+}
+.game-mode-card:hover,
+.game-mode-card:focus-visible {
+   border-color: #d5b7ff;
+   box-shadow: 0 10px 32px rgba(164, 119, 250, .2), inset 0 1px 0 rgba(255,255,255,.12);
+}
+.game-mode-card__go {
+   color: #a6e9ff;
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq::before,
+   .game-hq__hero-title span:last-child,
+   .game-hq__classic-actions button:first-child { animation: none; }
+}
+
+/* The original little caterpillar explores the full hero: past your character,
+   across FIND THE BUG, and back again. It is decorative and never blocks clicks. */
+.game-hq__main { position: relative; isolation: isolate; }
+.game-hq__main > .bug-runner-hero-orbit {
+   position: absolute;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 5;
+   pointer-events: none;
+   overflow: visible;
+}
+.game-hq__main > .bug-runner-hero-orbit .bug-runner {
+   left: 0;
+   top: 0;
+   animation: bughunt-hero-crawl 24s linear infinite;
+   will-change: left, top, transform;
+}
+@keyframes bughunt-hero-crawl {
+   0%   { left: 4%; top: 0%; transform: translate(-50%, -50%) rotate(0deg); }
+   25%  { left: 96%; top: 0%; transform: translate(-50%, -50%) rotate(0deg); }
+   26%  { left: 100%; top: 4%; transform: translate(-50%, -50%) rotate(90deg); }
+   49%  { left: 100%; top: 96%; transform: translate(-50%, -50%) rotate(90deg); }
+   50%  { left: 96%; top: 100%; transform: translate(-50%, -50%) rotate(180deg); }
+   74%  { left: 4%; top: 100%; transform: translate(-50%, -50%) rotate(180deg); }
+   75%  { left: 0%; top: 96%; transform: translate(-50%, -50%) rotate(270deg); }
+   99%  { left: 0%; top: 4%; transform: translate(-50%, -50%) rotate(270deg); }
+   100% { left: 4%; top: 0%; transform: translate(-50%, -50%) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit .bug-runner {
+      animation: none;
+      left: 8%;
+      top: 0;
+   }
+}
+
+/* Prevent sideways page panning while keeping the iridescent lobby intact. */
+html, body, #root {
+   width: 100%;
+   max-width: 100%;
+   overflow-x: clip;
+}
+*, *::before, *::after { box-sizing: border-box; }
+.game-hq, .game-hq__main, .game-hq__welcome,
+.game-hq__stage, .game-hq__modes, .game-hq__bottom {
+   min-width: 0;
+   max-width: 100%;
+}
+.game-hq__main > .bug-runner-hero-orbit {
+   overflow: clip;
+   border-radius: inherit;
+}
+@supports not (overflow: clip) {
+   html, body, #root { overflow-x: hidden; }
+   .game-hq__main > .bug-runner-hero-orbit { overflow: hidden; }
+}
+
+/* Performance: use a compositor-friendly motion path rather than animating
+   left/top (which forces layout every frame). The old crawl remains a fallback
+   for browsers without CSS motion-path support. */
+@supports (offset-path: rect(0% 100% 100% 0%)) {
+   .game-hq__main > .bug-runner-hero-orbit .bug-runner {
+      left: 0;
+      top: 0;
+      offset-path: rect(0% 100% 100% 0% round 18px);
+      offset-rotate: auto;
+      animation: bughunt-hero-crawl-fast 24s linear infinite;
+      will-change: offset-distance;
+   }
+   @keyframes bughunt-hero-crawl-fast {
+      from { offset-distance: 0%; }
+      to { offset-distance: 100%; }
+   }
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit .bug-runner {
+      animation: none;
+      offset-distance: 0%;
+   }
+}
+
+/* Performance V2: preserve the iridescent look without repainting large gradients. */
+.game-hq::before {
+   animation: none !important;
+   background-position: 50% 50%;
+}
+.game-hq__hero-title span:last-child,
+.game-hq__classic-actions button:first-child {
+   animation: none !important;
+   background-position: 50% 50%;
+}
+/* Constrain expensive paint and layout work to the lobby. */
+.game-hq { contain: layout paint; }
+.game-hq__main { contain: layout paint; }
+
+/* Animate only the small bug layer with transforms, never layout positions. */
+.game-hq__main > .bug-runner-hero-orbit {
+   container-type: size;
+   contain: layout paint size;
+}
+.game-hq__main > .bug-runner-hero-orbit .bug-runner {
+   left: 14px !important;
+   top: 14px !important;
+   offset-path: none !important;
+   offset-distance: 0 !important;
+   offset-rotate: 0deg !important;
+   animation: bughunt-crawl-transform-only 28s linear infinite !important;
+   will-change: transform;
+}
+@keyframes bughunt-crawl-transform-only {
+   0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+   24% { transform: translate3d(calc(100cqw - 28px), 0, 0) rotate(0deg); }
+   26% { transform: translate3d(calc(100cqw - 28px), 0, 0) rotate(90deg); }
+   49% { transform: translate3d(calc(100cqw - 28px), calc(100cqh - 28px), 0) rotate(90deg); }
+   51% { transform: translate3d(calc(100cqw - 28px), calc(100cqh - 28px), 0) rotate(180deg); }
+   74% { transform: translate3d(0, calc(100cqh - 28px), 0) rotate(180deg); }
+   76% { transform: translate3d(0, calc(100cqh - 28px), 0) rotate(270deg); }
+   99% { transform: translate3d(0, 0, 0) rotate(270deg); }
+   100% { transform: translate3d(0, 0, 0) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit .bug-runner {
+      animation: none !important;
+      will-change: auto;
+   }
+}
+
+/* Top caterpillar: follow the hero rectangle's complete perimeter.
+   Keep the V2 static iridescence and GPU-friendly transform animation. */
+.game-hq__main > .bug-runner-hero-orbit .bug-runner {
+   left: 18px !important;
+   top: 18px !important;
+   animation: bughunt-hero-perimeter-v3 24s linear infinite !important;
+   transform-origin: center center;
+   will-change: transform;
+}
+@keyframes bughunt-hero-perimeter-v3 {
+   0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+   30%  { transform: translate3d(calc(100cqw - 36px), 0, 0) rotate(0deg); }
+   32%  { transform: translate3d(calc(100cqw - 36px), 0, 0) rotate(90deg); }
+   48%  { transform: translate3d(calc(100cqw - 36px), calc(100cqh - 36px), 0) rotate(90deg); }
+   50%  { transform: translate3d(calc(100cqw - 36px), calc(100cqh - 36px), 0) rotate(180deg); }
+   80%  { transform: translate3d(0, calc(100cqh - 36px), 0) rotate(180deg); }
+   82%  { transform: translate3d(0, calc(100cqh - 36px), 0) rotate(270deg); }
+   98%  { transform: translate3d(0, 0, 0) rotate(270deg); }
+   100% { transform: translate3d(0, 0, 0) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit .bug-runner {
+      animation: none !important;
+      will-change: auto;
+   }
+}
+
+/* ===== Orbital command avatar bay — static layers for smooth performance ===== */
+.game-hq__stage { isolation: isolate; overflow: hidden; border-radius: 20px; }
+.shuttle-cockpit { position:absolute; inset: 0 3% 5px; z-index:0; pointer-events:none; overflow:hidden; border-radius:22px;
+   background: radial-gradient(ellipse at 50% 33%, rgba(55,162,215,.24),transparent 56%), linear-gradient(160deg,#0a172d 5%,#152842 56%,#0a162b 100%);
+   border:1px solid rgba(102,202,240,.35); box-shadow: inset 0 0 38px rgba(51,195,228,.12), 0 0 24px rgba(45,146,211,.1); }
+.shuttle-cockpit__frame { position:absolute; inset:12px; border:1px solid rgba(110,227,243,.18); border-radius:15px;
+   background:linear-gradient(90deg,transparent 47%,rgba(91,194,222,.07) 50%,transparent 53%); }
+.shuttle-cockpit__frame::before,.shuttle-cockpit__frame::after { content:"";position:absolute;top:45px;bottom:50px;width:22px;border-top:2px solid rgba(114,220,250,.45);border-bottom:2px solid rgba(114,220,250,.45); }
+.shuttle-cockpit__frame::before { left:5px;border-left:2px solid rgba(114,220,250,.45);transform:skewY(-13deg); }
+.shuttle-cockpit__frame::after { right:5px;border-right:2px solid rgba(114,220,250,.45);transform:skewY(13deg); }
+.shuttle-cockpit__stars { position:absolute;inset:0; opacity:.5; background-image:radial-gradient(circle,#b0e9ff 1px,transparent 1.5px),radial-gradient(circle,#cbb4ff .8px,transparent 1.5px);background-size:64px 67px,91px 83px;background-position:8px 14px,37px 29px;mask-image:linear-gradient(#000,transparent 87%); }
+.shuttle-cockpit__planet { position:absolute;top:22%;left:50%;width:205px;height:205px;transform:translateX(-50%);border-radius:50%;border:1px solid rgba(106,216,245,.24);background:radial-gradient(circle at 35% 25%,rgba(92,186,231,.17),rgba(43,72,139,.12) 60%,transparent 72%);box-shadow:0 0 65px rgba(75,164,229,.13); }
+.shuttle-cockpit__orbit { position:absolute;top:35%;left:50%;width:260px;height:115px;transform:translateX(-50%) rotate(-16deg);border:1px solid rgba(119,235,240,.23);border-radius:50%; }
+.shuttle-cockpit__header,.shuttle-cockpit__footer { position:absolute;left:21px;right:21px;display:flex;justify-content:space-between;gap:10px;color:#80e9ef;font:700 9px/1.4 monospace;letter-spacing:.08em; }
+.shuttle-cockpit__header { top:20px; }.shuttle-cockpit__footer { bottom:19px;color:#81a8c6; }
+.shuttle-cockpit__live { color:#9af5c9; }.shuttle-cockpit__readout { position:absolute;top:39%;display:flex;flex-direction:column;gap:5px;color:#83e4f0;font:700 9px monospace;letter-spacing:.04em; }
+.shuttle-cockpit__readout--left {left:25px;align-items:flex-start}.shuttle-cockpit__readout--left i {height:3px;background:linear-gradient(90deg,#52e6d1,#8c99fa);width:25px;border-radius:4px;opacity:.8}.shuttle-cockpit__readout--left i:nth-child(2){width:40px}.shuttle-cockpit__readout--left i:nth-child(3){width:17px}
+.shuttle-cockpit__readout--right {right:23px;align-items:flex-end}.shuttle-cockpit__readout--right b{font-size:15px;color:#b8f6ff}.shuttle-cockpit__readout--right span{font-size:14px;letter-spacing:0;color:#8b9bff}
+.shuttle-cockpit__floor {position:absolute;bottom:24px;left:10%;right:10%;height:75px;transform:perspective(120px) rotateX(55deg);transform-origin:bottom;background:repeating-linear-gradient(90deg,transparent 0 28px,rgba(69,220,228,.2) 29px 30px),repeating-linear-gradient(0deg,transparent 0 18px,rgba(69,220,228,.22) 19px 20px);mask-image:linear-gradient(transparent,#000); }
+.game-hq__stage .game-hq__halo { z-index:1; width:245px;height:245px;opacity:.62; }
+.game-hq__stage .game-hq__avatar { z-index:2; filter:drop-shadow(0 9px 13px rgba(0,0,0,.35)); }
+.game-hq__stage .game-hq__pedestal { z-index:1; }
+.game-hq__stage .game-hq__customize { z-index:3; display:inline-flex;align-items:center;justify-content:center;gap:7px; }
+/* Sharp, cohesive line icons instead of emoji in the requested actions and mode cards. */
+.game-hq__classic-actions button {display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.game-hq__classic-actions button svg:last-child { margin-left:3px; }
+.game-mode-card__icon {display:grid;place-items:center;width:48px;height:48px;border:1px solid rgba(143,218,255,.32);border-radius:13px;background:linear-gradient(145deg,rgba(72,195,218,.15),rgba(161,118,250,.15));color:#9beaff;}
+.game-mode-card--join .game-mode-card__icon {color:#d6b0ff}.game-mode-card--arena .game-mode-card__icon {color:#ffd68d}.game-mode-card--solo .game-mode-card__icon {color:#8ff1da}.game-mode-card--rookie .game-mode-card__icon {color:#a8f5c2}
+.game-mode-card__icon svg {display:block;flex-shrink:0}
+@media(max-width:700px){.shuttle-cockpit{inset:0 0 4px}.shuttle-cockpit__readout--left{left:16px}.shuttle-cockpit__readout--right{right:15px}.shuttle-cockpit__header,.shuttle-cockpit__footer{left:16px;right:16px}}
+
+/* ===== V4: smooth, consistent hover feedback across the lobby ===== */
+.game-hq button {
+   transition: transform 180ms ease, border-color 180ms ease,
+      box-shadow 180ms ease, background-color 180ms ease, filter 180ms ease;
+   transform: translateZ(0);
+}
+.game-hq button:hover {
+   transform: translate3d(0, -4px, 0);
+   border-color: rgba(173, 246, 255, .95);
+   box-shadow: 0 12px 30px rgba(60, 198, 245, .17),
+      0 0 0 1px rgba(206, 157, 255, .24),
+      inset 0 1px 0 rgba(255, 255, 255, .13);
+   filter: brightness(1.08);
+}
+.game-hq button:active { transform: translate3d(0, -1px, 0) scale(.985); }
+.game-hq button:focus-visible {
+   outline: 2px solid #9eeeff;
+   outline-offset: 4px;
+}
+.game-hq__classic-actions button:first-child:hover {
+   box-shadow: 0 12px 32px rgba(121, 188, 255, .32),
+      0 0 0 2px rgba(241, 197, 255, .26);
+}
+.game-mode-card:hover .game-mode-card__icon {
+   border-color: rgba(195, 243, 255, .8);
+   background: linear-gradient(145deg, rgba(79, 205, 236, .26), rgba(192, 136, 250, .25));
+}
+.game-hq__bottom button:hover span { color: #d9f7ff; }
+
+/* ===== V4: caterpillar perimeter, no jumpy rotations or mixed motion paths =====
+   The track itself supplies the containing block; only translate3d is animated.
+   The bug remains facing forward, avoiding abrupt 90-degree snaps at corners. */
+.game-hq__main > .bug-runner-hero-orbit {
+   position: absolute !important;
+   inset: 0 !important;
+   width: 100% !important;
+   height: 100% !important;
+   container-type: size;
+   overflow: hidden !important;
+   pointer-events: none;
+   z-index: 5;
+}
+.game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+   position: absolute !important;
+   left: 24px !important;
+   top: 24px !important;
+   right: auto !important;
+   bottom: auto !important;
+   margin: 0 !important;
+   offset-path: none !important;
+   offset-distance: 0 !important;
+   offset-rotate: 0deg !important;
+   animation: bughunt-perimeter-smooth-v4 30s linear infinite !important;
+   transform-origin: center center;
+   will-change: transform;
+}
+@keyframes bughunt-perimeter-smooth-v4 {
+   0%   { transform: translate3d(0, 0, 0); }
+   34%  { transform: translate3d(calc(100cqw - 65px), 0, 0); }
+   50%  { transform: translate3d(calc(100cqw - 65px), calc(100cqh - 65px), 0); }
+   84%  { transform: translate3d(0, calc(100cqh - 65px), 0); }
+   100% { transform: translate3d(0, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+      animation: none !important;
+      will-change: auto;
+   }
+   .game-hq button { transition: none; }
+}
+
+/* V5 — one evenly inset rounded-rectangle motion path.
+   offset-rotate:auto turns the caterpillar naturally at corners.
+   Both left and right edges use the same 23px inset. */
+.game-hq__main > .bug-runner-hero-orbit {
+   position: absolute !important;
+   inset: 0 !important;
+   width: 100% !important;
+   height: 100% !important;
+   overflow: hidden !important;
+   pointer-events: none;
+   z-index: 5;
+}
+.game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+   position: absolute !important;
+   left: 0 !important;
+   top: 0 !important;
+   right: auto !important;
+   bottom: auto !important;
+   margin: 0 !important;
+   /* A rounded rectangular path avoids abrupt 90-degree jumps. */
+   offset-path: inset(23px round 20px) !important;
+   offset-anchor: center !important;
+   offset-rotate: auto !important;
+   transform: none !important;
+   animation: bughunt-perimeter-turning-v5 29s linear infinite !important;
+   will-change: offset-distance;
+}
+@keyframes bughunt-perimeter-turning-v5 {
+   from { offset-distance: 0%; }
+   to   { offset-distance: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+      animation: none !important;
+      offset-distance: 0% !important;
+      will-change: auto;
+   }
+}
+
+/* HOTFIX: reliable GPU-friendly rectangle loop with direction changes.
+   Overrides older competing caterpillar animations. */
+.game-hq__main > .bug-runner-hero-orbit {
+   container-type: size;
+   position: absolute !important;
+   inset: 0 !important;
+   width: 100% !important;
+   height: 100% !important;
+   overflow: hidden !important;
+   pointer-events: none;
+}
+.game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+   position: absolute !important;
+   left: 22px !important;
+   top: 22px !important;
+   right: auto !important;
+   bottom: auto !important;
+   offset-path: none !important;
+   offset-distance: 0 !important;
+   offset-rotate: 0deg !important;
+   transform-origin: 12px 12px !important;
+   animation: bughunt-rectangle-hotfix 28s linear infinite !important;
+   will-change: transform;
+}
+@keyframes bughunt-rectangle-hotfix {
+   0% { transform: translate3d(0,0,0) rotate(0deg); }
+   34% { transform: translate3d(calc(100cqw - 76px),0,0) rotate(0deg); }
+   36% { transform: translate3d(calc(100cqw - 76px),0,0) rotate(90deg); }
+   49% { transform: translate3d(calc(100cqw - 76px),calc(100cqh - 76px),0) rotate(90deg); }
+   51% { transform: translate3d(calc(100cqw - 76px),calc(100cqh - 76px),0) rotate(180deg); }
+   84% { transform: translate3d(0,calc(100cqh - 76px),0) rotate(180deg); }
+   86% { transform: translate3d(0,calc(100cqh - 76px),0) rotate(270deg); }
+   98% { transform: translate3d(0,0,0) rotate(270deg); }
+   100% { transform: translate3d(0,0,0) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+      animation: none !important;
+   }
+}
+
+/* CATERPILLAR REPAIR: override earlier competing motion-path rules.
+   Use responsive left/top percentages instead of unsupported offset-path
+   or container query units. Only the small sprite is repositioned. */
+.game-hq__main > .bug-runner-hero-orbit {
+   container-type: normal !important;
+   position: absolute !important;
+   inset: 0 !important;
+   width: 100% !important;
+   height: 100% !important;
+   overflow: hidden !important;
+   pointer-events: none !important;
+   z-index: 5;
+}
+.game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+   position: absolute !important;
+   right: auto !important;
+   bottom: auto !important;
+   offset-path: none !important;
+   offset-distance: 0 !important;
+   transform-origin: center center !important;
+   animation: bughunt-reliable-crawl 24s linear infinite !important;
+   animation-play-state: running !important;
+   will-change: left, top, transform;
+}
+@keyframes bughunt-reliable-crawl {
+   0%   { left: 2%; top: 5%; transform: translate(-10%, -10%) rotate(0deg); }
+   23%  { left: 94%; top: 5%; transform: translate(-10%, -10%) rotate(0deg); }
+   25%  { left: 94%; top: 5%; transform: translate(-10%, -10%) rotate(90deg); }
+   48%  { left: 94%; top: 88%; transform: translate(-10%, -10%) rotate(90deg); }
+   50%  { left: 94%; top: 88%; transform: translate(-10%, -10%) rotate(180deg); }
+   73%  { left: 2%; top: 88%; transform: translate(-10%, -10%) rotate(180deg); }
+   75%  { left: 2%; top: 88%; transform: translate(-10%, -10%) rotate(270deg); }
+   98%  { left: 2%; top: 5%; transform: translate(-10%, -10%) rotate(270deg); }
+   100% { left: 2%; top: 5%; transform: translate(-10%, -10%) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+      animation: none !important;
+      left: 2% !important;
+      top: 5% !important;
+   }
+}
+
+/* FINAL CATERPILLAR FIX: earlier !important left/top/transform declarations
+   prevented the keyframes from moving the bug. Animate the independent
+   CSS translate and rotate properties instead, which those rules do not lock. */
+.game-hq__main > .bug-runner-hero-orbit {
+   container-type: size !important;
+   position: absolute !important;
+   inset: 0 !important;
+   overflow: hidden !important;
+   pointer-events: none !important;
+}
+.game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+   left: 18px !important;
+   top: 18px !important;
+   right: auto !important;
+   bottom: auto !important;
+   transform: none !important;
+   offset-path: none !important;
+   translate: 0 0;
+   rotate: 0deg;
+   animation-name: bughunt-crawl-independent-v7 !important;
+   animation-duration: 24s !important;
+   animation-timing-function: linear !important;
+   animation-iteration-count: infinite !important;
+   animation-play-state: running !important;
+   will-change: translate, rotate;
+}
+@keyframes bughunt-crawl-independent-v7 {
+   0%   { translate: 0 0; rotate: 0deg; }
+   23%  { translate: calc(100cqw - 79px) 0; rotate: 0deg; }
+   25%  { translate: calc(100cqw - 79px) 0; rotate: 90deg; }
+   48%  { translate: calc(100cqw - 79px) calc(100cqh - 61px); rotate: 90deg; }
+   50%  { translate: calc(100cqw - 79px) calc(100cqh - 61px); rotate: 180deg; }
+   73%  { translate: 0 calc(100cqh - 61px); rotate: 180deg; }
+   75%  { translate: 0 calc(100cqh - 61px); rotate: 270deg; }
+   98%  { translate: 0 0; rotate: 270deg; }
+   100% { translate: 0 0; rotate: 360deg; }
+}
+/* Respect the system accessibility setting. To see the animation, disable
+   Reduce Motion in your OS/browser accessibility settings. */
+@media (prefers-reduced-motion: reduce) {
+   .game-hq__main > .bug-runner-hero-orbit > .bug-runner {
+      animation: none !important;
+      translate: 0 0;
+      rotate: 0deg;
+   }
+}
+
+/* Guest access: scoped additions; existing lobby dimensions are unchanged. */
+.bh-auth-actions{display:flex;gap:8px;align-items:center}
+.global-game-nav .bh-guest-nav,.global-game-nav .bh-signin-nav,.global-game-nav .bh-account-trigger{border:1px solid #7ad6f2;border-radius:11px;padding:10px 14px;color:#ecfaff;font-weight:800;cursor:pointer;background:linear-gradient(115deg,#18354a,#49316b);transition:transform .16s ease,box-shadow .16s ease}
+.global-game-nav .bh-guest-nav{background:linear-gradient(115deg,#54dfe0,#b68cf5);color:#10243c}
+.global-game-nav .bh-guest-nav:hover,.global-game-nav .bh-signin-nav:hover,.global-game-nav .bh-account-trigger:hover{transform:translateY(-2px);box-shadow:0 5px 24px #72e9ff60}
+.bh-account-dropdown{position:relative}.bh-account-menu{position:absolute;z-index:100;right:0;top:calc(100% + 9px);width:220px;border:1px solid #7383c7;background:#131a35;border-radius:13px;box-shadow:0 18px 45px #0009;padding:7px;display:grid;gap:4px}
+.bh-account-menu button{display:block;text-align:left;width:100%;padding:12px;border:0;background:transparent;color:#edf5ff;cursor:pointer;border-radius:8px}.bh-account-menu button:hover{background:#303a63}
+.bh-guest-overlay{position:fixed;inset:0;z-index:9999;background:#060b19d9;display:grid;place-items:center;padding:16px;overflow-y:auto;backdrop-filter:blur(8px)}
+.bh-guest-dialog{position:relative;width:min(850px,100%);max-height:min(92vh,950px);overflow:auto;border:1px solid #a38be8;border-radius:22px;background:radial-gradient(ellipse at 10% 10%,#273d62 0%,transparent 50%),linear-gradient(130deg,#151e38,#242045 70%,#102b3d);color:#f8f8ff;padding:26px;box-shadow:0 25px 90px #000b,0 0 36px #9a88e83d}
+.bh-guest-kicker{color:#7ff6dc;font-size:12px;font-weight:900;letter-spacing:.18em}.bh-guest-dialog h2{font-size:clamp(24px,3vw,36px);margin:8px 0}.bh-guest-dialog p{color:#c9d4ec;margin:0 0 22px}
+.bh-guest-close{position:absolute;right:18px;top:12px;border:0;background:transparent;color:#fff;font-size:30px;cursor:pointer}
+.bh-guest-editor{display:grid;grid-template-columns:minmax(175px,.65fr) minmax(0,1.35fr);gap:22px}.bh-guest-preview{display:flex;align-items:center;justify-content:center;border:1px solid #41778d;border-radius:18px;min-height:320px;background:radial-gradient(circle,#275d71 0%,#11233e 65%)}.bh-guest-preview svg{max-width:95%;max-height:300px}
+.bh-guest-form{display:grid;gap:12px}.bh-guest-form>label,.bh-guest-form legend{font-size:11px;color:#7feadf;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.bh-guest-form input{background:#0d1c34;color:#fff;border:1px solid #6483a6;border-radius:9px;padding:12px;width:100%;box-sizing:border-box}
+.bh-guest-form fieldset{border:0;padding:0;margin:0}.bh-guest-form legend{margin-bottom:6px}.bh-guest-options{display:flex;flex-wrap:wrap;gap:6px}.bh-guest-options button{padding:7px 10px;border-radius:8px;background:#1c3050;border:1px solid #536b92;color:#e5f4ff;cursor:pointer}.bh-guest-options button.is-selected{border-color:#a88aff;background:linear-gradient(120deg,#21586a,#5b4089);box-shadow:0 0 0 1px #9bd9f5}
+.bh-guest-start{padding:13px;border:1px solid #e5d1ff;border-radius:10px;background:linear-gradient(105deg,#58dfe4,#c48af5);color:#101c32;font-weight:900;cursor:pointer}.bh-guest-start:hover{filter:brightness(1.08);transform:translateY(-1px)}
+@media(max-width:640px){.bh-guest-editor{grid-template-columns:1fr}.bh-guest-preview{min-height:190px}.bh-guest-preview svg{max-height:180px}.bh-guest-dialog{padding:18px}.bh-auth-actions{gap:4px}.global-game-nav .bh-guest-nav,.global-game-nav .bh-signin-nav{padding:8px;font-size:12px}}
+
+/* Compact centered lobby: reserve generous side gutters for future content.
+   No advertisements are inserted, and gameplay/navigation remain unchanged. */
+@media (min-width: 1101px) {
+   .game-hq {
+      box-sizing: border-box;
+      width: calc(100% - 64px);
+      max-width: 1060px;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   .game-hq__main {
+      grid-template-columns: minmax(245px, .88fr) minmax(0, 1.12fr);
+      gap: 22px;
+      padding: 20px 22px;
+   }
+   .game-hq__welcome .game-hq__hero-title {
+      font-size: clamp(37px, 4vw, 59px);
+   }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+   .game-hq {
+      box-sizing: border-box;
+      width: calc(100% - 36px);
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+   }
+}
+@media (max-width: 700px) {
+   .game-hq {
+      box-sizing: border-box;
+      width: calc(100% - 20px);
+      margin-left: auto;
+      margin-right: auto;
+   }
+}
+
+
+/* Lobby side panels: existing game HQ stays intact and centered. */
+.bh-lobby-layout { width: min(100% - 24px, 1510px); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1060px) minmax(0, 200px); gap: 14px; align-items: start; justify-content: center; }
+.bh-lobby-layout > .game-hq { min-width: 0; width: 100% !important; max-width: 1060px !important; margin: 0 !important; }
+.bh-lobby-sidebar { display: grid; gap: 14px; padding-top: 10px; min-width: 0; }
+.bh-side-panel { color: #eaf3ff; padding: 17px 13px; border: 1px solid rgba(145,205,248,.33); border-radius: 17px; background: radial-gradient(ellipse at 15% 0%,rgba(112,230,231,.13),transparent 60%),linear-gradient(150deg,rgba(25,33,66,.94),rgba(35,27,65,.94)); box-shadow: 0 12px 35px #060a1c40; }
+.bh-side-panel__eyebrow { font-size: 9px; letter-spacing: .17em; color: #83e9df; font-weight: 900; }
+.bh-side-panel h2 { display: flex; align-items: center; gap: 8px; font-size: 16px; line-height: 1.3; margin: 11px 0 9px; color: #fff; }
+.bh-side-panel h2 svg { color: #a2f3ed; flex-shrink: 0; }
+.bh-side-panel p { font-size: 12px; line-height: 1.55; color: #b8c9e4; margin: 7px 0 13px; }
+.bh-side-mission { display: flex; align-items: center; gap: 7px; text-align: left; width: 100%; padding: 11px 5px; color: #eaf4ff; background: none; border: 0; border-bottom: 1px solid #ffffff18; cursor: pointer; }
+.bh-side-mission > span:nth-child(2) { flex: 1; min-width: 0; }
+.bh-side-mission strong { display: block; font-size: 12px; }
+.bh-side-mission small { display: block; font-size: 10px; color: #a9bddb; margin-top: 3px; }
+.bh-side-mission__index { color: #8de6dc; font-size: 11px; font-weight: 900; }
+.bh-side-mission svg { flex-shrink: 0; color: #a9d6fa; }
+.bh-side-mission:hover, .bh-side-mission:focus-visible { background: #8c85f526; border-radius: 8px; transform: translateX(2px); }
+.bh-side-panel__foot { color: #b5a9da; font-size: 10px; margin-top: 14px; line-height: 1.5; }
+.bh-event-pill { display: inline-block; border-radius: 20px; border: 1px solid #f4a1c58a; padding: 5px 8px; font-size: 9px; color: #ffc1dd; letter-spacing: .09em; margin: 5px 0 9px; }
+.bh-event-title { display: block; font-size: 16px; letter-spacing: .06em; background: linear-gradient(90deg,#f7b3e5,#a6d9ff); color: transparent; background-clip: text; }
+.bh-side-cta { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 11px 10px; border-radius: 10px; border: 1px solid #a7d5ed9c; background: linear-gradient(115deg,#27687d,#604c9d); color: white; font-size: 10px; font-weight: 900; letter-spacing: .05em; cursor: pointer; transition: transform .18s ease,box-shadow .18s ease; }
+.bh-side-cta:hover,.bh-side-cta:focus-visible { transform: translateY(-2px); box-shadow: 0 7px 22px #a589ed55; }
+.bh-leaderboard-art { display: flex; align-items: end; justify-content: center; gap: 7px; height: 78px; padding: 5px; }
+.bh-leaderboard-art span { display: grid; place-items: center; border: 1px solid #b5d9f37d; border-radius: 8px 8px 3px 3px; width: 37px; font-weight: 900; font-size: 12px; color: #e6f6ff; background: linear-gradient(#5d60a3,#274363); }
+.bh-leaderboard-art span:nth-child(1) { height: 70px; background: linear-gradient(#b2a5e9,#4b538f); }
+.bh-leaderboard-art span:nth-child(2) { height: 50px; }
+.bh-leaderboard-art span:nth-child(3) { height: 36px; }
+@media (max-width: 1340px) { .bh-lobby-layout { grid-template-columns: minmax(0,1fr) minmax(0,1fr); max-width: 1060px; } .bh-lobby-layout > .game-hq { grid-column: 1 / -1; grid-row: 1; } .bh-lobby-sidebar { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); padding-top: 0; } .bh-lobby-sidebar--left { grid-column: 1; } .bh-lobby-sidebar--right { grid-column: 2; } }
+@media (max-width: 760px) { .bh-lobby-layout { display: flex; flex-direction: column; width: calc(100% - 20px); } .bh-lobby-layout > .game-hq { width: 100% !important; } .bh-lobby-sidebar { width: 100%; grid-template-columns: 1fr; } .bh-lobby-sidebar--left,.bh-lobby-sidebar--right { display: grid; grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .bh-side-cta,.bh-side-mission { transition: none; } }
+
+/* V2: mission progress, live podium, event timer, distinct action colors */
+.bh-side-mission.is-complete { border-color: #72e6c255; background: #63e8be13; }
+.bh-side-mission.is-complete .bh-side-mission__index { color:#84f8c2; }
+.bh-mission-progress { padding-top: 14px; color:#d4e9ff; font-size:11px; }
+.bh-mission-progress strong { color:#84f8c2; }
+.bh-mission-progress small { display:block; font-size:9px; line-height:1.45; margin-top:7px; color:#9db4d1; }
+.bh-mission-track { height:6px; border-radius:10px; background:#ffffff1a; overflow:hidden; margin-top:9px; }
+.bh-mission-track span { display:block; height:100%; border-radius:10px; background:linear-gradient(90deg,#65e7cf,#a8b6ff); transition:width .2s ease; }
+.bh-event-countdown { padding:11px 8px; margin:11px 0; text-align:center; border-radius:12px; border:1px solid #f1a3e37d; background:#d344aa13; box-shadow:inset 0 0 20px #ff72cb12,0 0 18px #ff72c72b; }
+.bh-event-countdown small { display:block; color:#ffd4ed; letter-spacing:.13em; font-size:9px; font-weight:900; }
+.bh-event-countdown strong { display:block; font-size:clamp(15px,1.4vw,20px); margin-top:5px; color:#fff0fb; text-shadow:0 0 12px #fc8dd1; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.bh-live-leaders { display:grid; gap:7px; margin:14px 0; }
+.bh-live-leader { display:flex; align-items:center; gap:7px; min-width:0; padding:9px 7px; border-radius:10px; background:#ffffff0b; border:1px solid #a6bfff33; }
+.bh-live-leader__rank { color:#ffdf8b; font-weight:900; font-size:12px; }
+.bh-live-leader__name { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:11px; font-weight:800; }
+.bh-live-leader__xp { font-size:9px; color:#b7d8ff; white-space:nowrap; }
+.bh-side-cta--blue { background:linear-gradient(115deg,#176fa4,#485ed2);border-color:#6ad4ff; }
+.bh-side-cta--pink { background:linear-gradient(115deg,#9e367c,#c257a9);border-color:#f6a2e0; }
+.bh-side-cta--green { background:linear-gradient(115deg,#187e75,#2f986c);border-color:#80f4c1; }
+.bh-side-cta--blue:hover { box-shadow:0 7px 22px #52c3ff66; }
+.bh-side-cta--pink:hover { box-shadow:0 7px 22px #f279cc66; }
+.bh-side-cta--green:hover { box-shadow:0 7px 22px #5bf0a566; }
+/* Place avatar action below cockpit and level with Play Now row. */
+.game-hq__main { grid-template-rows: auto auto; }
+.game-hq__stage { grid-column:1; grid-row:1; }
+.game-hq__stage-action { grid-column:1; grid-row:2; display:flex; align-items:center; justify-content:center; margin-top:-3px; z-index:4; }
+.game-hq__stage-action .game-hq__customize { display:inline-flex; align-items:center; gap:8px; padding:13px 17px; color:#f4efff; border-color:#b2a5f0; background:linear-gradient(105deg,#263b58,#4d396e); box-shadow:0 7px 19px #0003; transition:transform .16s,box-shadow .16s; }
+.game-hq__stage-action .game-hq__customize:hover { transform:translateY(-2px);box-shadow:0 8px 22px #a28aff55; }
+.game-hq__welcome { grid-column:2; grid-row:1 / span 2; }
+@media(max-width:700px) { .game-hq__stage { grid-column:1;grid-row:1; } .game-hq__stage-action { grid-column:1;grid-row:2; margin:8px 0 20px; } .game-hq__welcome { grid-column:1;grid-row:3; } }
+
+/* V3: separate the seasonal announcement from the three-column game hub. */
+.seasonal-drop-banner { margin-bottom: 24px !important; }
+.bh-lobby-layout { margin-top: 8px; }
+.bh-mission-notice { display:block; margin-top:8px; color:#a6ffdf !important; line-height:1.4; overflow-wrap:anywhere; }
+@media (max-width:760px) { .seasonal-drop-banner { margin-bottom:18px !important; } }

@@ -1,0 +1,50 @@
+/* Main navigation BP shortcut — scoped to this button only. */
+.bh-navbar-right .bh-navbar-bp {
+   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+   padding: 8px 12px; border-radius: 999px;
+   border: 1px solid rgba(125, 244, 210, .65);
+   background: linear-gradient(115deg, rgba(43, 104, 130, .85), rgba(56, 49, 107, .85));
+   color: #eafff9; box-shadow: 0 3px 18px rgba(67, 225, 202, .12);
+   font-weight: 700; white-space: nowrap; cursor: pointer;
+}
+.bh-navbar-right .bh-navbar-bp:hover { border-color: #b3ffdf; filter: brightness(1.13); }
+.bh-navbar-right .bh-navbar-bp strong { font-variant-numeric: tabular-nums; }
+.bh-navbar-right .bh-navbar-bp span:last-child { font-size: .75em; letter-spacing: .06em; color: #92f8d9; }
+@media (max-width: 620px) { .bh-navbar-right .bh-navbar-bp { padding: 7px 9px; gap: 3px; } }
+
+/* Keep server indicator and BP wallet together on the far right. */
+.navbar .bh-navbar-right { display: flex; align-items: center; justify-content: flex-end; gap: 14px; margin-left: auto; flex-shrink: 0; }
+.navbar .bh-navbar-right .status { white-space: nowrap; }
+@media (max-width: 800px) { .navbar .bh-navbar-right { gap: 8px; } }
+
+/* Lobby only: center Play / Leaderboard / Shop / account independently of
+   the width of the logo and the right-hand wallet/status cluster. */
+@media (min-width: 1101px) {
+   .navbar.bh-lobby-navbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      column-gap: 16px;
+   }
+   .bh-lobby-navbar > .logo { justify-self: start; }
+   .bh-lobby-navbar > .global-game-nav {
+      grid-column: 2;
+      justify-self: center;
+      width: max-content;
+   }
+   .bh-lobby-navbar > .bh-navbar-right {
+      grid-column: 3;
+      justify-self: end;
+      margin-left: 0;
+   }
+}
+/* On narrower screens, keep everything usable without overlapping. */
+@media (min-width: 821px) and (max-width: 1100px) {
+   .navbar.bh-lobby-navbar { gap: 12px; }
+   .bh-lobby-navbar > .global-game-nav { margin-inline: auto; }
+}
+@media (max-width: 820px) {
+   .navbar.bh-lobby-navbar { height: auto; min-height: 78px; row-gap: 10px; padding-block: 12px; }
+   .bh-lobby-navbar > .global-game-nav { order: 3; width: 100%; justify-content: center; }
+   .bh-lobby-navbar > .bh-navbar-right { margin-left: auto; }
+}

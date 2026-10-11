@@ -1,0 +1,104 @@
+.debugger-character{--hoodie:#4be0bc;position:relative;width:190px;height:255px;margin:auto;filter:drop-shadow(0 14px 20px #0008);flex-shrink:0}.debugger-outfit--violet{--hoodie:#9d7bf2}.debugger-outfit--coral{--hoodie:#f28c98}.debugger-outfit--night{--hoodie:#3b6389}.debugger-character__shadow{position:absolute;bottom:4px;left:28px;width:135px;height:20px;border-radius:50%;background:#48dfba35;filter:blur(9px)}.debugger-character__legs{position:absolute;bottom:17px;left:59px;display:flex;gap:16px}.debugger-character__legs span{width:29px;height:66px;border-radius:12px 12px 9px 9px;background:#24324e;border-bottom:12px solid #dce8f0}.debugger-character__body{position:absolute;z-index:2;bottom:70px;left:37px;width:117px;height:105px;background:var(--hoodie);border:5px solid #1c253a;border-radius:43px 43px 22px 22px;box-shadow:inset -15px -10px #0002}.debugger-character__zip{position:absolute;top:28px;left:50%;height:38px;border-left:3px solid #fff6}.debugger-character__pocket{position:absolute;bottom:13px;left:27px;width:55px;height:20px;border:3px solid #192f3b66;border-radius:6px 6px 15px 15px}.debugger-character__neck{position:absolute;z-index:3;top:77px;left:79px;width:34px;height:40px;border:4px solid #1c253a;border-radius:10px}.debugger-character__head{position:absolute;z-index:4;top:18px;left:47px;width:96px;height:94px;border:5px solid #1c253a;border-radius:39% 39% 45% 45%;box-shadow:inset -7px -7px #0001}.debugger-character__hair{position:absolute;top:-9px;left:-6px;width:100px;height:37px;border:4px solid #1c253a;border-radius:45px 45px 14px 9px;transform:rotate(-4deg)}.debugger-character__eye{position:absolute;top:47px;width:7px;height:10px;background:#242032;border-radius:50%}.debugger-character__eye.left{left:26px}.debugger-character__eye.right{right:26px}.debugger-character__smile{position:absolute;top:60px;left:40px;width:16px;height:8px;border-bottom:3px solid #7c4244;border-radius:50%}.debugger-character__headphones{position:absolute;inset:-14px -12px 20px;border:8px solid #a6b6db;border-bottom:0;border-radius:55px 55px 0 0;pointer-events:none}.debugger-character__headphones:after{content:"";position:absolute;right:-8px;top:39px;width:13px;height:28px;background:#283954;border:3px solid #a6b6db;border-radius:7px}.debugger-character__glasses{position:absolute;top:35px;left:12px;font-size:29px;color:#24324e;white-space:pre}.debugger-character__spark{position:absolute;right:3px;top:28px;color:#f9d875;font-size:25px}.debugger-character--compact{transform:scale(.55);transform-origin:center top;margin-bottom:-110px}.debugger-wardrobe{margin:22px 0;padding:22px;border:1px solid #5ce8bd50;border-radius:20px;background:linear-gradient(130deg,#11233a,#121827)}.debugger-wardrobe__stage{display:flex;align-items:center;gap:24px;flex-wrap:wrap}.debugger-wardrobe__stage>div:last-child{flex:1;min-width:180px}.debugger-wardrobe__stage h3{font-size:24px;margin:8px 0}.debugger-wardrobe__stage p{color:#a9b8ce;line-height:1.6}.debugger-wardrobe__eyebrow{font-size:11px;letter-spacing:2px;color:#63edc4;font-weight:800}.debugger-wardrobe__controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:16px}.debugger-wardrobe__controls fieldset{border:1px solid #ffffff22;border-radius:12px;padding:12px;min-width:0}.debugger-wardrobe__controls legend{text-transform:capitalize;color:#c3d2e4;font-size:12px;padding:0 5px;font-weight:800}.debugger-wardrobe__choices{display:flex;flex-wrap:wrap;gap:7px}.debugger-wardrobe__choices button{display:flex;align-items:center;gap:6px;background:#18263d;color:#e5edf7;border:1px solid #ffffff2a;border-radius:8px;padding:9px 10px;font-size:12px;cursor:pointer}.debugger-wardrobe__choices button.selected{border-color:#64edc5;background:#1b4c48}.debugger-wardrobe__swatch{display:inline-block;width:13px;height:13px;border-radius:50%;border:1px solid #fff6}.debugger-lobby{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,1fr);align-items:center;gap:20px;margin:22px 0 34px;padding:25px;background:radial-gradient(ellipse at 28% 45%,#1a615a70,transparent 57%),linear-gradient(120deg,#131f37,#101526);border:1px solid #6df4cb55;border-radius:22px;box-shadow:0 18px 65px #0004}.debugger-lobby__character{display:flex;align-items:center;justify-content:center;min-height:265px;background:radial-gradient(ellipse at 50% 85%,#50efc626,transparent 65%);border-radius:20px}.debugger-lobby__copy small{color:#65f3c8;font-weight:800;letter-spacing:2px}.debugger-lobby__copy h2{font-size:clamp(24px,3vw,40px);margin:12px 0;color:#fff}.debugger-lobby__copy p{color:#b7c9db;line-height:1.6}.debugger-lobby__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.debugger-lobby__actions button{border:1px solid #6af2c9;background:#53d9b4;color:#071d22;border-radius:10px;padding:13px 18px;font-weight:900;cursor:pointer}.debugger-lobby__actions button+button{background:#1a2b43;color:#eaf8ff;border-color:#657c9b}@media(max-width:650px){.debugger-lobby{grid-template-columns:1fr}.debugger-lobby__character{min-height:220px}.debugger-wardrobe__controls{grid-template-columns:1fr}}
+
+/* I ♥ BUGHUNT Classic Tee: a white shirt with our caterpillar in the heart. */
+.debugger-outfit--i-heart-bughunt-tee{--hoodie:#fffdf7}
+.debugger-outfit--i-heart-bughunt-tee .debugger-character__body{border-radius:27px 27px 18px 18px;box-shadow:inset -12px -10px #0000000c}
+.debugger-tee-print{position:absolute;top:26px;left:7px;right:7px;display:flex;flex-direction:column;align-items:center;gap:0;line-height:1;color:#16161b;font-family:Arial,Helvetica,sans-serif;font-weight:1000}
+.debugger-tee-print>b{font-size:15px;position:absolute;top:9px;left:12px}
+.debugger-tee-heart{font-size:39px;color:#e42d42;position:relative;line-height:38px;margin-left:13px}
+.debugger-tee-heart i{position:absolute;top:12px;left:12px;font-size:13px;font-style:normal;filter:drop-shadow(0 1px 1px #0005)}
+.debugger-tee-print strong{font-size:13px;letter-spacing:-.9px;margin-top:2px}
+.bughunt-tee-shop{margin:20px 0 28px;padding:20px;border:1px solid #ffb5c0a0;border-radius:20px;background:linear-gradient(125deg,#2d1d38,#121c2c);display:grid;grid-template-columns:minmax(150px,230px) 1fr;gap:22px;align-items:center}
+.bughunt-tee-shop__preview{background:#f3f0eb;border-radius:16px;padding:15px;display:flex;justify-content:center;align-items:center;min-height:245px}
+.bughunt-tee-shop__preview .debugger-character{transform:scale(.82);transform-origin:center;margin:-20px auto -42px}
+.bughunt-tee-shop__copy small{color:#ffc0ca;letter-spacing:1.5px;font-weight:900}
+.bughunt-tee-shop__copy h3{color:white;font-size:clamp(20px,3vw,30px);margin:8px 0}
+.bughunt-tee-shop__copy p{color:#c9d4e4;line-height:1.5}
+.bughunt-tee-shop__copy button{border:0;border-radius:11px;background:#f6d46e;color:#231d30;padding:12px 18px;font-weight:900;cursor:pointer}
+.bughunt-tee-shop__copy button:disabled{opacity:.55;cursor:not-allowed}
+.bughunt-tee-shop__copy .tee-price{font-size:18px;color:#ffe6a2;font-weight:900}
+@media(max-width:590px){.bughunt-tee-shop{grid-template-columns:1fr}}
+
+/* Phase 4: properly aligned souvenir logo and illustrated hairstyle silhouettes. */
+.debugger-tee-print{top:22px;left:2px;right:2px;gap:0;align-items:center;justify-content:center}
+.debugger-tee-top{display:flex;align-items:center;justify-content:center;gap:3px;height:42px;width:100%}
+.debugger-tee-top>b{font-family:Arial,sans-serif;font-size:32px;line-height:1;color:#111827;position:static}
+.debugger-heart-logo{display:inline-flex;width:44px;height:42px;align-items:center;justify-content:center;flex-shrink:0}
+.debugger-heart-logo svg{display:block;width:100%;height:100%;overflow:visible}
+.debugger-tee-print strong{font-family:Arial,Helvetica,sans-serif;font-size:15px;letter-spacing:-.8px;line-height:1.1;margin-top:1px;color:#12131b}
+.debugger-character__hair-back,.debugger-character__hair-extra{display:none;position:absolute;background:var(--hair,#9d5b34);border:4px solid #1c253a;pointer-events:none}
+.debugger-hair--bun .debugger-character__hair-extra,.debugger-hair--messy-bun .debugger-character__hair-extra{display:block;width:39px;height:35px;top:-34px;left:36px;border-radius:50%}
+.debugger-hair--messy-bun .debugger-character__hair-extra{left:50px;transform:rotate(25deg);border-radius:45% 55% 30% 40%}
+.debugger-hair--wavy .debugger-character__hair-back,.debugger-hair--straight .debugger-character__hair-back,.debugger-hair--curtain .debugger-character__hair-back,.debugger-hair--bob .debugger-character__hair-back,.debugger-hair--curly .debugger-character__hair-back,.debugger-hair--braids .debugger-character__hair-back{display:block;z-index:-1;top:5px;left:-14px;width:116px;height:110px;border-radius:45px 45px 35px 35px}
+.debugger-hair--bob .debugger-character__hair-back{height:75px}
+.debugger-hair--curtain .debugger-character__hair{height:31px;border-radius:55% 50% 30% 20%;transform:rotate(3deg)}
+.debugger-hair--straight .debugger-character__hair{height:28px;border-radius:35px 35px 5px 5px;transform:none}
+.debugger-hair--wavy .debugger-character__hair-back{border-radius:42% 40% 48% 43%;transform:rotate(-5deg)}
+.debugger-hair--curly .debugger-character__hair-back{height:87px;border-radius:45%;box-shadow:-11px 10px 0 -3px #1c253a,11px 10px 0 -3px #1c253a}
+.debugger-hair--curly .debugger-character__hair{height:45px;border-radius:50% 50% 35% 35%;transform:none}
+.debugger-hair--pigtails .debugger-character__hair-extra{display:block;top:5px;left:-31px;width:29px;height:53px;border-radius:55%;box-shadow:121px 0 0 -1px var(--hair,#9d5b34),123px 0 0 2px #1c253a}
+.debugger-hair--braids .debugger-character__hair-back{width:120px;height:108px;border-radius:30% 30% 40% 40%}
+.debugger-hair--braids .debugger-character__hair-extra{display:block;top:50px;left:-18px;width:18px;height:67px;border-radius:14px;box-shadow:110px 0 0 -1px var(--hair,#9d5b34),112px 0 0 2px #1c253a}
+.debugger-hair--short .debugger-character__hair{height:34px}
+.debugger-hair--bun .debugger-character__hair,.debugger-hair--messy-bun .debugger-character__hair{border-radius:50% 50% 20% 20%}
+.debugger-hairstyles{grid-column:1/-1}
+.debugger-hair-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.debugger-wardrobe__choices button,.debugger-hair-grid button{transition:transform .15s,border-color .15s}
+.debugger-hair-grid button{min-width:0;border:1px solid #64779a55;border-radius:13px;background:#1b2842;color:#e8efff;padding:8px 4px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;font-weight:700;font-size:11px}
+.debugger-hair-grid button.selected{border:2px solid #c4a2ff;background:#342454;box-shadow:0 0 18px #b183ff55}
+.debugger-hair-grid button:hover{transform:translateY(-3px)}
+.debugger-hair-tile{height:92px;width:100%;display:flex;justify-content:center;overflow:hidden;position:relative}
+.debugger-hair-tile .debugger-character{transform:scale(.38);transform-origin:top center;margin-top:18px;margin-bottom:0}
+@media(max-width:700px){.debugger-hair-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:400px){.debugger-hair-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Phase 4 shop: character-led featured product inspired by approved mockup. */
+.bughunt-tee-shop{grid-template-columns:minmax(175px,.8fr) minmax(230px,1fr) minmax(150px,.72fr);background:linear-gradient(115deg,#121b36,#10182d 65%,#12223b);border:1px solid #526ba16b;box-shadow:0 15px 50px #02071980;gap:22px;padding:26px}
+.bughunt-tee-shop__preview{background:radial-gradient(ellipse at 50% 85%,#a56bff60,transparent 50%),linear-gradient(140deg,#13223e,#17284a);border:1px solid #7281c33b;min-height:290px}
+.bughunt-tee-shop__preview .debugger-character{transform:scale(1);margin:0 auto}
+.bughunt-tee-shop__copy h3{font-size:clamp(25px,3vw,38px);line-height:1.12}
+.bughunt-tee-shop__copy small{color:#ff84bf}
+.bughunt-tee-shop__copy button{font-size:16px;background:#ffda6c;padding:16px 25px;box-shadow:0 5px 0 #ab803c;transition:transform .15s}
+.bughunt-tee-shop__copy button:hover:not(:disabled){transform:translateY(-2px)}
+.bughunt-tee-shop__detail{display:flex;align-items:center;flex-direction:column;justify-content:center;gap:12px;border-left:1px solid #7387ae50;padding-left:15px;color:#d3def3;text-align:center;font-size:11px;letter-spacing:1px;font-weight:800}
+.bughunt-tee-flat{height:135px;width:150px;border:4px solid #1c253a;border-radius:24px 24px 18px 18px;background:#fffdf7;display:flex;align-items:center;justify-content:center;box-shadow:inset -8px -9px #0001}
+.bughunt-tee-flat .debugger-tee-print{position:relative;top:auto;left:auto;right:auto;width:100%;transform:scale(1.25)}
+.bughunt-tee-shop__detail>.debugger-character{height:130px;transform:scale(.48);transform-origin:top center;margin-bottom:-10px}
+@media(max-width:900px){.bughunt-tee-shop{grid-template-columns:minmax(150px,.8fr) 1fr}.bughunt-tee-shop__detail{grid-column:1/-1;border-left:0;border-top:1px solid #7387ae50;padding:15px 0 0;flex-direction:row;flex-wrap:wrap}}
+@media(max-width:590px){.bughunt-tee-shop{grid-template-columns:1fr}.bughunt-tee-shop__detail{grid-column:1}.bughunt-tee-shop__preview{min-height:245px}}
+
+/* Character illustration + portrait-based wardrobe */
+.debugger-avatar-svg{display:block;width:min(100%,320px);height:auto;overflow:visible;filter:drop-shadow(0 17px 18px #050b1b55);margin:0 auto;flex-shrink:0}
+.debugger-avatar-svg--compact{width:145px;max-width:100%;height:auto;filter:drop-shadow(0 6px 9px #0005)}
+.debugger-wardrobe{padding:clamp(16px,2.5vw,30px);background:radial-gradient(ellipse at 12% 35%,#344a8a55,transparent 43%),linear-gradient(135deg,#101a35,#0b1931);border:1px solid #7187c455;border-radius:25px}
+.debugger-wardrobe__stage{display:grid;grid-template-columns:minmax(230px,.85fr) minmax(240px,1.15fr);align-items:center;gap:30px;padding:20px 28px;border:1px solid #8195d14b;border-radius:22px;background:radial-gradient(ellipse at 27% 95%,#9d5fff3b,transparent 54%),#101d36;min-height:390px}
+.debugger-wardrobe__stage>.debugger-avatar-svg{width:min(100%,335px)}
+.debugger-wardrobe__stage h3{font-size:clamp(28px,3vw,43px);letter-spacing:-.04em;margin:8px 0}
+.debugger-wardrobe__stage p{font-size:15px;max-width:420px}
+.debugger-wardrobe__controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}
+.debugger-wardrobe__controls fieldset{background:#111f3a;border:1px solid #6579a74d;border-radius:17px;padding:15px;min-width:0}
+.debugger-hairstyles{grid-column:1/-1!important;background:#0c1933!important;padding:18px!important}
+.debugger-hair-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.debugger-hair-grid button{background:linear-gradient(160deg,#26385b,#192641);border:1px solid #7282ad65;border-radius:16px;padding:8px 5px 12px;color:#eaf0ff;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;cursor:pointer;font-size:12px;font-weight:800;transition:transform .15s,border-color .15s}
+.debugger-hair-grid button:hover{transform:translateY(-3px)}
+.debugger-hair-grid button.selected{background:linear-gradient(160deg,#533778,#2c2451);border:2px solid #d5acff;box-shadow:0 0 0 2px #ad85f544,0 0 22px #ad85f544}
+.debugger-hair-tile{height:144px;width:100%;display:flex;align-items:flex-start;justify-content:center;overflow:hidden;border-radius:12px;background:radial-gradient(ellipse at 50% 100%,#806cbf33,transparent 70%)}
+.debugger-hair-tile .debugger-avatar-svg{width:145px;max-width:none;flex-shrink:0;transform:translateY(-3px)}
+.debugger-lobby__character>.debugger-avatar-svg{width:min(100%,300px)}
+@media(max-width:850px){.debugger-hair-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.debugger-wardrobe__stage{grid-template-columns:1fr;text-align:center;padding:15px}.debugger-wardrobe__stage>.debugger-avatar-svg{width:250px}.debugger-wardrobe__controls{grid-template-columns:1fr}.debugger-hair-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.debugger-hair-tile{height:128px}.debugger-hair-tile .debugger-avatar-svg{width:132px}}
+
+/* Chibi V5: full-figure showcase and readable hairstyle portraits */
+.debugger-wardrobe__stage .debugger-avatar-svg { width: min(100%, 340px); height: auto; max-height: 450px; object-fit: contain; }
+.debugger-hair-tile .debugger-avatar-svg { width: 100%; height: 100%; max-height: none; object-fit: contain; }
+.debugger-hair-tile { display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.debugger-hair-grid button { min-width: 0; }
+@media (max-width: 700px) { .debugger-wardrobe__stage .debugger-avatar-svg { max-height: 340px; } }
+
+/* V6: softer illustrated character staging and portrait crops */
+.debugger-wardrobe__stage { background:radial-gradient(ellipse at 24% 87%,#7f6add35,transparent 52%),linear-gradient(135deg,#172541,#101b35); }
+.debugger-wardrobe__stage>.debugger-avatar-svg { width:min(100%,360px); }
+.debugger-hair-tile { height:164px; background:radial-gradient(ellipse at 50% 85%,#7c67c63d,transparent 72%); }
+.debugger-hair-tile .debugger-avatar-svg { width:180px; height:auto; max-width:none; max-height:none; transform:translateY(-13px); }
+.debugger-hair-grid button { border-radius:18px; }
+@media(max-width:650px){.debugger-hair-tile{height:145px}.debugger-hair-tile .debugger-avatar-svg{width:160px}}
