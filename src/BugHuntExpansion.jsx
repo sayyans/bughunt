@@ -719,7 +719,7 @@ export default function BugHuntExpansion({
 
             <button className="back-button" onClick={onBack}>← Home</button>
 
-            <div className="expansion-brand">🐛 BUG<span>HUNT</span> <small>ARENA</small></div>
+            <button type="button" className="expansion-brand bh-expansion-home-logo" onClick={onBack} aria-label="BugHunt home">🐛 BUG<span>HUNT</span> <small>ARENA</small></button>
 
             <div className="account-pill account-pill-with-avatar">
 
@@ -1218,6 +1218,7 @@ function CursorPreview({ styleName }) {
 
 function ProfilePanel({ profile, equipped, level, progress, floor, ceiling, matchHistory, achievementClaims, shopStats, busy, leaderboardRank, onClaim, onEquipBadge, onClaimWelcome, onSignOut }) {
 
+   const [codeOpen, setCodeOpen] = useState(false);
    const allOf = (owned, total) => total > 0 && owned >= total;
 
    const achievements = [
@@ -1280,7 +1281,9 @@ function ProfilePanel({ profile, equipped, level, progress, floor, ceiling, matc
                <BugHuntFriends userId={profile.id} />
             </aside>
             <div className="bh-profile-main">
+         {!profile.welcome_bonus_claimed && <div className="bh-welcome-reminder" role="status"><div><strong>🎁 Your 1,000 BP welcome gift is waiting!</strong><p>After verifying your email, redeem <b>WELCOME1000</b> to collect your Bug Points.</p></div><button type="button" onClick={() => setCodeOpen(true)}>Claim 1,000 BP →</button></div>}
          <CharacterWardrobe userId={profile.id} />
+         {codeOpen && <div className="bh-code-overlay" onClick={() => setCodeOpen(false)}><div onClick={event => event.stopPropagation()}><WelcomeClaimCard busy={busy} welcomeClaimed={Boolean(profile.welcome_bonus_claimed)} onClaim={onClaimWelcome} onClose={() => setCodeOpen(false)} /></div></div>}
 
          <div className="profile-stats">
 
@@ -1315,11 +1318,7 @@ function ProfilePanel({ profile, equipped, level, progress, floor, ceiling, matc
             </div>
          </section>
 
-         <WelcomeClaimCard
-            busy={busy}
-            welcomeClaimed={Boolean(profile.welcome_bonus_claimed)}
-            onClaim={onClaimWelcome}
-         />
+
 
          <section className="profile-section">
 
@@ -1395,6 +1394,7 @@ function ProfilePanel({ profile, equipped, level, progress, floor, ceiling, matc
 
          <button className="leave-button" onClick={onSignOut}>Sign Out</button>
             </div>
+         <aside className="bh-profile-code-sidebar" aria-label="Redeem reward codes"><button type="button" className="bh-code-launch" onClick={() => setCodeOpen(true)}>🎟️ Redeem Code <span>→</span></button></aside>
          </div>
       </div>
 
@@ -1402,9 +1402,9 @@ function ProfilePanel({ profile, equipped, level, progress, floor, ceiling, matc
 
 }
 
-function WelcomeClaimCard({ busy, welcomeClaimed, onClaim }) {
+function WelcomeClaimCard({ busy, welcomeClaimed, onClaim, onClose }) {
    const [code, setCode] = useState("");
-   return <section className="welcome-claim-card">
+   return <section className="welcome-claim-card" role="dialog" aria-modal="true" aria-label="Redeem a BugHunt code"><button type="button" className="bh-code-close" onClick={onClose} aria-label="Close">×</button>
       <div>
          <p className="eyebrow">// REDEEM CODE</p>
          <h3>{welcomeClaimed ? "Got another Bug Hunt code?" : "Claim your 1,000 Bug Points"}</h3>

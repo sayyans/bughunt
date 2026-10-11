@@ -104,3 +104,24 @@
 .bh-privacy-input:focus-visible + .bh-privacy-track{outline:2px solid #fff;outline-offset:3px}
 .bh-privacy-state{min-width:24px;font-size:.8rem;color:#dcd0ec}
 @media(prefers-reduced-motion:reduce){.bh-privacy-track,.bh-privacy-thumb{transition:none}}
+
+/* Right-side code action aligned with Friends, without disrupting profile flow. */
+@media (min-width:1101px){
+ .bh-profile-with-friends{position:relative}
+ .bh-profile-main{position:relative}
+ .bh-profile-code-sidebar{position:absolute;left:calc(100% + 20px);top:20px;width:calc((100vw - min(1450px, 100vw - 32px)) / 2 + (min(1450px, 100vw - 32px) - 880px - 40px) / 2);min-width:165px;max-width:240px}
+ .bh-profile-code-sidebar .bh-code-launch{width:100%;min-width:0}
+}
+@media (max-width:1100px){.bh-profile-code-sidebar{display:flex;justify-content:flex-end;margin:12px 0 20px}}
+@media (max-width:900px){.bh-profile-code-sidebar{justify-content:stretch}.bh-profile-code-sidebar .bh-code-launch{width:100%}}
+
+/* Redeem Code is a true sticky third column, like the Friends list. */
+@media (min-width:1101px){
+ .bh-profile-with-friends{grid-template-columns:minmax(0,1fr) minmax(0,880px) minmax(0,1fr)}
+ .bh-profile-code-sidebar{position:sticky;grid-column:3;grid-row:1;top:18px;left:auto;width:auto;min-width:0;max-width:none;margin-top:20px;align-self:start;z-index:4}
+ .bh-profile-code-sidebar .bh-code-launch{width:100%;min-width:0;transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+}
+.bh-profile-code-sidebar .bh-code-launch:hover{transform:translateY(-3px);filter:brightness(1.12);box-shadow:0 10px 25px rgba(255,164,203,.35)}
+.bh-profile-code-sidebar .bh-code-launch:focus-visible{outline:3px solid #b9f3ff;outline-offset:3px}
+@media(max-width:1100px){.bh-profile-code-sidebar{grid-column:2;grid-row:2;position:static;width:auto;max-width:none;min-width:0}}
+@media(max-width:900px){.bh-profile-code-sidebar{grid-column:1;grid-row:3}}

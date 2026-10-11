@@ -559,6 +559,20 @@ function AppContent({ equippedCosmetics, setEquippedCosmetics, globalPointer, se
          setLoading(false);
       }
    }
+   // Central home navigation: leave an active room cleanly before navigating.
+   useEffect(() => {
+      const goHome = () => {
+         if (currentRoom) {
+            void leaveRoom();
+         } else {
+            setError("");
+            setScreen("home");
+         }
+      };
+      window.addEventListener("bughunt-go-home", goHome);
+      return () => window.removeEventListener("bughunt-go-home", goHome);
+   });
+
    async function quickMatch({ language: matchLanguage, difficulty: matchDifficulty }) {
       setLoading(true);
       setError("");
@@ -1217,10 +1231,10 @@ function GlobalCursorEffect({ styleName, pointer, trail = [] }) {
 }
 function Logo() {
    return (
-      <div className="logo">
+      <button type="button" className="logo bh-home-logo" aria-label="BugHunt home" onClick={() => window.dispatchEvent(new Event("bughunt-go-home"))}>
          <span className="bug">🐛</span>
          BUG<span>HUNT</span>
-      </div>
+      </button>
    );
 }
 function CaterpillarMascot({ mode = "roam" }) {
@@ -2335,7 +2349,7 @@ function Lobby({
    const characterForPlayer = (player) => player?.id === currentPlayer?.id
       ? localCharacterLook || DEFAULT_LOOK
       : (player?.user_id && battleLooks[player.user_id]) || DEFAULT_LOOK;
-   const battlePlayers = [currentPlayer, ...players.filter((player) => player.id !== currentPlayer?.id)].filter(Boolean).slice(0, 2);
+   const battlePlayers = [currentPlayer, ...players.filter((player) => player.id !== currentPlayer?.id)].filter(Boolean).slice(0, 4);
 
    async function copyRoomCode() {
       try {
@@ -5504,7 +5518,7 @@ function GameArena({
                      {didWin ? "YOU CRUSHED IT!" : "MATCH COMPLETE"}
                   </h2>
                   <div className="bh-final-duel" aria-label="Match podium">
-                     {sortedPlayers.slice(0, 2).map((player, index) => {
+                     {sortedPlayers.slice(0, 4).map((player, index) => {
                         const champion = index === 0;
                         const isMe = player.id === currentPlayer?.id;
                         return (

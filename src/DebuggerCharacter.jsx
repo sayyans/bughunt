@@ -2814,6 +2814,14 @@ export function DebuggerCharacter({ look = DEFAULT_LOOK, compact = false, headOn
 
 
 
+function adjustShade(hex, amount) {
+   const clean = String(hex).replace("#", "");
+   if (!/^[0-9a-f]{6}$/i.test(clean)) return hex;
+   const factor = Math.abs(amount) / 100;
+   const target = amount >= 0 ? 255 : 0;
+   return "#" + [0, 2, 4].map(i => Math.round(parseInt(clean.slice(i, i + 2), 16) * (1 - factor) + target * factor).toString(16).padStart(2, "0")).join("");
+}
+
 export function CharacterWardrobe({ userId }) {
 
 
@@ -2835,6 +2843,8 @@ export function CharacterWardrobe({ userId }) {
 
 
    const [step, setStep] = useState(0);
+   const [colorBase, setColorBase] = useState({});
+   const [colorShade, setColorShade] = useState({ hair: 0, skin: 0 });
 
 
 
@@ -3164,7 +3174,7 @@ export function CharacterWardrobe({ userId }) {
 
 
 
-                  <div className={`debugger-wardrobe__choices ${["skin", "hair"].includes(category) ? "bh-color-options" : ""}`}>{(category === "costume" ? OPTIONS.costume.filter(item => item.id === "none" || ownedCostumes.includes(item.id)) : OPTIONS[category].filter(choice => category !== "accessory" || !SHOP_ONLY_ACCESSORIES.has(choice.id) || unlockedAccessories.has(choice.id))).map(choice => <button type="button" key={choice.id} className={previewLook[category] === choice.id ? "selected" : ""} onClick={() => chooseLook({ [category]: choice.id })} aria-pressed={previewLook[category] === choice.id} aria-label={choice.label} title={choice.label}>{["skin", "hair"].includes(category) ? <span className="debugger-wardrobe__swatch" style={{ background: choice.id }} /> : choice.label.replace(" preview", "")}</button>)}
+                  <div className={`debugger-wardrobe__choices ${["skin", "hair"].includes(category) ? "bh-color-options" : ""}`}>{(category === "costume" ? OPTIONS.costume.filter(item => item.id === "none" || ownedCostumes.includes(item.id)) : OPTIONS[category].filter(choice => category !== "accessory" || !SHOP_ONLY_ACCESSORIES.has(choice.id) || unlockedAccessories.has(choice.id))).map(choice => <button type="button" key={choice.id} className={previewLook[category] === choice.id ? "selected" : ""} onClick={() => { chooseLook({ [category]: choice.id }); if (["hair", "skin"].includes(category)) { setColorBase(prev => ({...prev, [category]: choice.id})); setColorShade(prev => ({...prev, [category]: 0})); } }} aria-pressed={previewLook[category] === choice.id} aria-label={choice.label} title={choice.label}>{["skin", "hair"].includes(category) ? <span className="debugger-wardrobe__swatch" style={{ background: choice.id }} /> : choice.label.replace(" preview", "")}</button>)}
 
 
 
@@ -3176,6 +3186,7 @@ export function CharacterWardrobe({ userId }) {
 
 
 
+                  {["skin", "hair"].includes(category) && <label className="bh-shade-control"><span>Darken</span><input type="range" min="-55" max="55" step="1" style={{ background: `linear-gradient(to right, ${adjustShade(colorBase[category] || previewLook[category], -55)}, ${colorBase[category] || previewLook[category]} 50%, ${adjustShade(colorBase[category] || previewLook[category], 55)})` }} value={colorShade[category] ?? 0} onChange={event => { const amount = Number(event.target.value); const base = colorBase[category] || previewLook[category]; setColorBase(prev => ({...prev, [category]: base})); setColorShade(prev => ({...prev, [category]: amount})); chooseLook({[category]: adjustShade(base, amount)}); }} aria-label={`${category} color brightness`} /><span>Lighten</span><output>{colorShade[category] > 0 ? "+" : ""}{colorShade[category] ?? 0}%</output></label>}
                   {category === "costume" && <p>Unlock costumes in the Night Shift Collection in the Shop. Your purchases will appear here automatically.</p>}
 
 

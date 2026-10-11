@@ -1099,3 +1099,22 @@
     min-width: 0;
   }
 }
+
+/* Welcome gift: stays visible until the server-backed profile marks it claimed. */
+.bh-welcome-reminder{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;margin:14px 0 22px;border:1px solid #f4cf6a80;border-radius:16px;background:linear-gradient(105deg,#46331388,#1a1229aa)}
+.bh-welcome-reminder strong{color:#ffe6a3}.bh-welcome-reminder p{margin:5px 0 0;color:#c9bfae;font-size:.85rem}.bh-welcome-reminder b{color:#fff}
+.bh-welcome-reminder button,.bh-code-launch{border:1px solid #f5ca75a0;border-radius:12px;padding:12px 16px;background:linear-gradient(115deg,#f6bd62,#f19fc8);color:#271627;font-weight:900;cursor:pointer;white-space:nowrap}
+.bh-code-rail{display:flex;justify-content:flex-end;margin:-10px 0 16px}.bh-code-launch{min-width:180px}.bh-code-launch span{margin-left:12px}
+.bh-code-overlay{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:18px;background:#030609c9;backdrop-filter:blur(7px)}
+.bh-code-overlay>div{width:min(100%,650px)}.bh-code-overlay .welcome-claim-card{position:relative;margin:0;grid-template-columns:1fr}.bh-code-close{position:absolute;right:12px;top:10px;font-size:26px!important;background:transparent!important;border:0!important;color:white!important;padding:3px 10px!important}
+@media(max-width:700px){.bh-welcome-reminder{flex-direction:column;align-items:stretch}.bh-welcome-reminder button{white-space:normal}.bh-code-rail{justify-content:stretch}.bh-code-launch{width:100%}}
+
+.bh-home-logo { appearance:none; border:0; background:transparent; color:inherit; font:inherit; padding:0; cursor:pointer; }
+.bh-home-logo:hover, .bh-expansion-home-logo:hover { filter:brightness(1.2); }
+.bh-home-logo:focus-visible, .bh-expansion-home-logo:focus-visible { outline:2px solid #76e7ff; outline-offset:5px; border-radius:5px; }
+.bh-expansion-home-logo { appearance:none; border:0; background:transparent; color:inherit; font:inherit; cursor:pointer; }
+
+/* Restore the original heavy BugHunt wordmark, while keeping it clickable. */
+.expansion-nav button.bh-expansion-home-logo{font-family:inherit;font-size:inherit;font-weight:950!important;letter-spacing:.08em;text-transform:none;line-height:1.2;white-space:nowrap;cursor:pointer}
+.expansion-nav button.bh-expansion-home-logo:hover{filter:brightness(1.14)}
+.expansion-nav button.bh-expansion-home-logo:focus-visible{outline:2px solid #7dd3fc;outline-offset:5px}

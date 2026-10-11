@@ -102,3 +102,10 @@
 .debugger-hair-tile .debugger-avatar-svg { width:180px; height:auto; max-width:none; max-height:none; transform:translateY(-13px); }
 .debugger-hair-grid button { border-radius:18px; }
 @media(max-width:650px){.debugger-hair-tile{height:145px}.debugger-hair-tile .debugger-avatar-svg{width:160px}}
+
+.bh-shade-control{display:flex;align-items:center;gap:12px;margin:16px 0;color:#c8d9d4;font-size:.78rem;font-weight:750}.bh-shade-control input{flex:1;min-width:70px;accent-color:#e6a6df}.bh-shade-control output{min-width:40px;text-align:right;color:#fff}
+
+/* Visible shade spectrum on the slider track */
+.bh-shade-control input[type="range"] { appearance:none; -webkit-appearance:none; height:12px; border-radius:999px; border:1px solid rgba(255,255,255,.28); cursor:pointer; }
+.bh-shade-control input[type="range"]::-webkit-slider-thumb { appearance:none; -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:#fff; border:3px solid #45335c; box-shadow:0 1px 8px rgba(0,0,0,.5); }
+.bh-shade-control input[type="range"]::-moz-range-thumb { width:17px; height:17px; border-radius:50%; background:#fff; border:3px solid #45335c; box-shadow:0 1px 8px rgba(0,0,0,.5); }

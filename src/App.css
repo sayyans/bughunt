@@ -4185,3 +4185,40 @@ h1 span {
     font-size: 13px !important;
   }
 }
+
+/* Distinct cursor sizes: full-size caterpillar vs intentionally mini variant. */
+.bug-cursor-effect{font-size:26px;line-height:1}
+.bug-cursor-effect .bug-cursor-pointer{font-size:27px}
+.bug-cursor-effect .bug-cursor-buddy{display:inline-block;font-size:30px;position:absolute;left:19px;top:13px;filter:drop-shadow(0 0 5px #34d39988)}
+.mini-caterpillar-cursor{font-size:21px}
+.mini-caterpillar-cursor span{font-size:15px!important;left:17px;top:13px}
+.pixel-cursor,.rainbow-cursor{font-size:30px}
+.rainbow-cursor span{font-size:17px;left:27px;top:18px}
+.glitch-live-cursor{font-size:36px}
+
+.bh-home-logo { appearance:none; border:0; background:transparent; color:inherit; font:inherit; padding:0; cursor:pointer; }
+.bh-home-logo:hover, .bh-expansion-home-logo:hover { filter:brightness(1.2); }
+.bh-home-logo:focus-visible, .bh-expansion-home-logo:focus-visible { outline:2px solid #76e7ff; outline-offset:5px; border-radius:5px; }
+.bh-expansion-home-logo { appearance:none; border:0; background:transparent; color:inherit; font:inherit; cursor:pointer; }
+
+/* Full-sized original Caterpillar cursor; Mini Caterpillar remains small. */
+.equipped-pointer-effect.bug-cursor-effect{font-size:36px!important;line-height:1;overflow:visible}
+.equipped-pointer-effect.bug-cursor-effect .bug-cursor-pointer{font-size:37px!important;line-height:1}
+.equipped-pointer-effect.bug-cursor-effect .bug-cursor-buddy{font-size:43px!important;left:28px!important;top:17px!important;line-height:1}
+
+/* Home wordmark: restore the original heavy lettering while retaining its iridescent HUNT gradient. */
+button.logo.bh-home-logo {
+   font-family: inherit;
+   font-size: 20px;
+   font-weight: 950;
+   letter-spacing: 1px;
+   line-height: 1.2;
+   -webkit-text-stroke: 0.35px currentColor;
+}
+button.logo.bh-home-logo span:last-child {
+   background: linear-gradient(90deg, var(--neon-green), var(--neon-blue), var(--neon-purple), var(--neon-pink));
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+   -webkit-text-stroke: 0;
+}
