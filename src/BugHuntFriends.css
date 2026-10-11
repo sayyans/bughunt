@@ -1,0 +1,106 @@
+.bh-friends{margin:20px auto;padding:22px;max-width:720px;border:1px solid rgba(142,157,197,.3);border-radius:20px;background:rgba(21,24,47,.75);color:#f6f4ff}
+.bh-friends header,.bh-friend-item,.bh-friend-opponent{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.bh-friends header h3{margin:0}.bh-friends h4{margin:24px 0 12px}.bh-friends p,.bh-friend-item small{color:#c5c5d9}
+.bh-friend-list{display:grid;gap:8px}.bh-friend-item{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}.bh-friend-item>span:nth-child(2){flex:1;display:grid}
+.bh-dot{width:9px;height:9px;border-radius:50%;background:#85859a;flex-shrink:0}.bh-dot--online{background:#4ce6a2}
+.bh-friends button,.bh-friend-opponent button{border:1px solid #9183f5;border-radius:10px;background:#5540b6;color:white;padding:9px 12px;cursor:pointer}.bh-friends button:disabled,.bh-friend-opponent button:disabled{opacity:.5;cursor:default}
+.bh-friend-search{display:flex;gap:8px}.bh-friend-search input{min-width:0;flex:1;padding:11px;border-radius:10px;background:#171a32;border:1px solid #797b9c;color:white}.bh-friend-privacy{display:flex;align-items:center;gap:8px;margin-top:15px}.bh-friend-actions{display:flex;gap:6px}.bh-friend-opponent{margin:16px auto;padding:15px;border:1px solid #9183f5;border-radius:14px;max-width:560px;flex-wrap:wrap;color:inherit}.bh-friend-message{margin:12px 0 0}.bh-friends--compact{max-width:400px;margin:18px 0}.bh-friends--compact .bh-friend-item{justify-content:flex-start}
+@media(max-width:600px){.bh-friends{padding:15px}.bh-friend-item{flex-wrap:wrap}}
+
+/* Friends card integrated into the home dashboard */
+.bh-side-panel--friends .bh-friends--compact{width:100%;max-width:none;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.bh-side-panel--friends .bh-friends--compact header{gap:8px;align-items:center;flex-wrap:wrap}
+.bh-side-panel--friends .bh-friends--compact header h3{font-size:1rem}
+.bh-side-panel--friends .bh-friends--compact header span{font-size:.75rem;color:#a9f6d9}
+.bh-side-panel--friends .bh-friends--compact p{font-size:.82rem;line-height:1.5;margin:12px 0;color:#bdc6dc}
+.bh-side-panel--friends .bh-friends--compact .bh-friend-item{font-size:.8rem}
+.bh-side-panel--friends .bh-side-cta{margin-top:12px}
+/* Profile friends section follows player stats, with the profile content width */
+.expansion-shell .bh-friends:not(.bh-friends--compact){max-width:none;width:100%;margin:22px 0 26px}
+@media(max-width:600px){.bh-side-panel--friends .bh-friends--compact{padding:0}}
+
+/* Profile: friends visible beside the character rather than far below */
+.expansion-shell:has(.bh-profile-with-friends){width:min(1450px,calc(100% - 32px))}
+.bh-profile-with-friends{display:grid;grid-template-columns:minmax(260px,300px) minmax(0,1fr);align-items:start;gap:22px}
+.bh-profile-main{min-width:0}
+.bh-profile-friends-sidebar{position:sticky;top:18px;min-width:0;max-height:calc(100vh - 36px);overflow-y:auto;scrollbar-width:thin}
+.expansion-shell .bh-profile-friends-sidebar .bh-friends{margin:0;width:100%;max-width:none;padding:18px 15px;border-radius:16px}
+.bh-profile-friends-sidebar .bh-friends header{align-items:flex-start;flex-wrap:wrap}
+.bh-profile-friends-sidebar .bh-friends header h3{font-size:1.05rem}
+.bh-profile-friends-sidebar .bh-friend-item{flex-wrap:wrap;font-size:.86rem}
+.bh-profile-friends-sidebar .bh-friend-actions{flex-wrap:wrap}
+.bh-profile-friends-sidebar .bh-friend-search{flex-wrap:wrap}
+.bh-profile-friends-sidebar .bh-friend-search input{width:100%;flex-basis:100%}
+.bh-profile-friends-sidebar .bh-friend-search button{width:100%}
+@media(max-width:900px){
+ .bh-profile-with-friends{grid-template-columns:1fr}
+ .bh-profile-friends-sidebar{position:static;max-height:none;overflow:visible}
+ .bh-profile-friends-sidebar .bh-friends{margin:0}
+}
+
+/* Profile layout: centered identity/XP above a two-column wardrobe and friends row. */
+.expansion-shell:has(.bh-profile-page){width:min(1320px,calc(100% - 32px))}
+.expansion-shell:has(.bh-profile-page) .expansion-tabs{justify-content:center}
+.bh-profile-page{width:100%;min-width:0}
+.bh-profile-top{max-width:1060px;margin:0 auto 26px}
+.bh-profile-with-friends{grid-template-columns:minmax(245px,285px) minmax(0,1fr);gap:22px}
+.bh-profile-friends-sidebar{top:18px}
+@media(max-width:900px){
+ .bh-profile-with-friends{grid-template-columns:1fr}
+ .bh-profile-friends-sidebar{position:static;max-height:none;overflow:visible}
+}
+
+
+/* Profile refinement: balanced centered content, left friends sidebar */
+.expansion-shell:has(.bh-profile-page){width:min(1450px,calc(100% - 32px))}
+.bh-profile-top{max-width:880px;margin:0 auto 26px}
+.bh-profile-with-friends{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,880px) minmax(0,1fr);gap:20px;align-items:start}
+.bh-profile-friends-sidebar{grid-column:1;grid-row:1;margin-top:20px;position:sticky;top:18px;max-height:calc(100vh - 36px);overflow-y:auto}
+.bh-profile-main{grid-column:2;grid-row:1;min-width:0}
+/* True viewport centering, regardless of width of Home and balance controls */
+@media(min-width:761px){
+ .expansion-app .expansion-nav{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center}
+ .expansion-app .expansion-nav>.back-button{justify-self:start}
+ .expansion-app .expansion-nav>.expansion-brand{justify-self:center;text-align:center}
+ .expansion-app .expansion-nav>.account-pill{justify-self:end}
+}
+/* Pearl-pink iridescent controls in Friends areas */
+.bh-friends button:not(:disabled),.bh-friend-opponent button:not(:disabled){
+ background:linear-gradient(115deg,#f6a9e5 0%,#eac2ff 34%,#c9b6ff 65%,#ffc0dc 100%);
+ border:1px solid rgba(255,225,251,.85);color:#351b4e;font-weight:750;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 3px 10px rgba(222,126,223,.12);
+ transition:background .18s ease,transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.bh-friends button:not(:disabled):hover,.bh-friend-opponent button:not(:disabled):hover{
+ transform:translateY(-2px);filter:brightness(1.08);
+ box-shadow:0 5px 18px rgba(244,148,221,.35);
+}
+.bh-friends button:focus-visible,.bh-friend-opponent button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.bh-friends button.bh-friend-remove:not(:disabled){background:linear-gradient(110deg,#f5b5db,#e6b9ff);color:#401d43}
+.bh-friends button.bh-friend-remove:not(:disabled):hover{
+ background:linear-gradient(115deg,#ff6b83,#ff385d);border-color:#ff9dad;color:white;
+ box-shadow:0 5px 18px rgba(255,56,93,.4)
+}
+@media(max-width:1100px){
+ .bh-profile-with-friends{grid-template-columns:minmax(230px,270px) minmax(0,1fr)}
+ .bh-profile-main{grid-column:2}
+ .bh-profile-top{max-width:none}
+}
+@media(max-width:900px){
+ .bh-profile-with-friends{grid-template-columns:1fr}
+ .bh-profile-friends-sidebar{grid-column:1;grid-row:2;margin-top:0;position:static;max-height:none;overflow:visible}
+ .bh-profile-main{grid-column:1;grid-row:1}
+}
+@media(prefers-reduced-motion:reduce){.bh-friends button,.bh-friend-opponent button{transition:none!important}}
+
+/* Accessible pink/lavender privacy toggle */
+.bh-friend-privacy{display:flex;align-items:center;gap:10px;cursor:pointer;flex-wrap:wrap}
+.bh-friend-privacy>span:first-child{flex:1;min-width:130px}
+.bh-privacy-input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.bh-privacy-track{position:relative;display:inline-flex;align-items:center;flex-shrink:0;width:46px;height:26px;padding:3px;border-radius:999px;background:#49465e;border:1px solid #77728d;transition:background .2s,border-color .2s,box-shadow .2s}
+.bh-privacy-thumb{width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 4px #0005;transition:transform .2s}
+.bh-privacy-input:checked + .bh-privacy-track{background:linear-gradient(110deg,#ff9cda,#c19aff,#f8b5dc);border-color:#f7b0e5}
+.bh-privacy-input:checked + .bh-privacy-track .bh-privacy-thumb{transform:translateX(20px)}
+.bh-privacy-input:focus-visible + .bh-privacy-track{outline:2px solid #fff;outline-offset:3px}
+.bh-privacy-state{min-width:24px;font-size:.8rem;color:#dcd0ec}
+@media(prefers-reduced-motion:reduce){.bh-privacy-track,.bh-privacy-thumb{transition:none}}

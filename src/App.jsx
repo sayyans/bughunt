@@ -2,6 +2,7 @@ import EXTRA_QUESTION_BANKS from "./questionBanks.json";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "./supabase";
 import BugHuntExpansion, { levelFromXp } from "./BugHuntExpansion";
+import BugHuntFriends from "./BugHuntFriends";
 import "./App.css";
 import "./BPButton.css";
 import "./CompetitionPolish.css";
@@ -862,6 +863,7 @@ function AppContent({ equippedCosmetics, setEquippedCosmetics, globalPointer, se
             playerNotice={playerNotice}
             onMatchCompleted={(roomId) => completeMission("team", { roomId })}
             localCharacterLook={guestDisplayLook}
+            accountUserId={accountUser?.id}
          />
       );
    }
@@ -966,6 +968,11 @@ function AppContent({ equippedCosmetics, setEquippedCosmetics, globalPointer, se
          )}
          <div className="bh-lobby-layout">
             <aside className="bh-lobby-sidebar bh-lobby-sidebar--left" aria-label="Daily challenges">
+               {accountUser?.id && <div className="bh-side-panel bh-side-panel--friends">
+                  <div className="bh-side-panel__eyebrow">// YOUR CREW</div>
+                  <BugHuntFriends userId={accountUser.id} compact />
+                  <button type="button" className="bh-side-cta bh-side-cta--blue" onClick={() => setScreen("hub-account")}>FIND FRIENDS <LobbyIcon name="arrow" size={15} /></button>
+               </div>}
                <div className="bh-side-panel">
                   <div className="bh-side-panel__eyebrow">// YOUR MISSIONS</div>
                   <h2><LobbyIcon name="solo" size={20} /> Daily Challenges</h2>
@@ -4956,6 +4963,7 @@ function GameArena({
    onLeave,
    playerNotice,
    onMatchCompleted,
+   accountUserId,
 }) {
    const completedMatchRef = useRef(new Set());
    useEffect(() => {
@@ -5512,6 +5520,7 @@ function GameArena({
                         );
                      })}
                   </div>
+                  {players.filter(p=>p.id!==currentPlayer?.id && p.user_id).map(p=><BugHuntFriends key={p.id} userId={accountUserId} opponent={p} />)}
                   <div className={didWin ? "winner-card personal-finish win-finish" : "winner-card personal-finish lose-finish"}>
                      <span className="winner-crown">
                         {didWin ? "🏆" : myPlacement === 2 ? "🥈" : "🐛"}

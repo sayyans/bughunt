@@ -1,3 +1,4 @@
+import BugHuntFriends from "./BugHuntFriends";
 import { CharacterWardrobe, DebuggerCharacter, DEFAULT_LOOK, CLASSIC_TEE_ID, COSTUME_CATALOG, TeeGraphic } from "./DebuggerCharacter";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -1257,8 +1258,8 @@ function ProfilePanel({ profile, equipped, level, progress, floor, ceiling, matc
 
    return (
 
-      <div>
-
+      <div className="bh-profile-page">
+         <div className="bh-profile-top">
          <p className="eyebrow">// DEVELOPER PROFILE</p>
 
          <div className="profile-header">
@@ -1273,6 +1274,12 @@ function ProfilePanel({ profile, equipped, level, progress, floor, ceiling, matc
 
          <p className="xp-copy">{profile.xp-floor} / {ceiling-floor} XP to next level</p>
 
+         </div>
+         <div className="bh-profile-with-friends">
+            <aside className="bh-profile-friends-sidebar" aria-label="Friends and friend requests">
+               <BugHuntFriends userId={profile.id} />
+            </aside>
+            <div className="bh-profile-main">
          <CharacterWardrobe userId={profile.id} />
 
          <div className="profile-stats">
@@ -1387,7 +1394,8 @@ function ProfilePanel({ profile, equipped, level, progress, floor, ceiling, matc
          </section>
 
          <button className="leave-button" onClick={onSignOut}>Sign Out</button>
-
+            </div>
+         </div>
       </div>
 
    );
